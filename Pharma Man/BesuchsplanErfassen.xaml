@@ -1,0 +1,14 @@
+﻿<Page x:Class="Pharma_Man.BesuchsplanErfassen"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Pharma_Man"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="844"
+      Title="BesuchsplanErfassen" Background="#FF00AEFF">
+
+    <Grid>
+        <Label x:Name="page_caption" Content="Besuch erfassen" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontSize="48" Foreground="White" />
+    </Grid>
+</Page>

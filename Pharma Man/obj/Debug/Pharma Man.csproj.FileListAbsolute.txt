@@ -1,0 +1,23 @@
+c:\users\alex\documents\visual studio 2015\Projects\Pharma Man\Pharma Man\bin\Debug\Pharma Man.exe.config
+c:\users\alex\documents\visual studio 2015\Projects\Pharma Man\Pharma Man\bin\Debug\Pharma Man.exe
+c:\users\alex\documents\visual studio 2015\Projects\Pharma Man\Pharma Man\bin\Debug\Pharma Man.pdb
+c:\users\alex\documents\visual studio 2015\Projects\Pharma Man\Pharma Man\obj\Debug\Pharma Man.csprojResolveAssemblyReference.cache
+c:\users\alex\documents\visual studio 2015\Projects\Pharma Man\Pharma Man\obj\Debug\Besuchsplan.g.cs
+c:\users\alex\documents\visual studio 2015\Projects\Pharma Man\Pharma Man\obj\Debug\MainWindow.g.cs
+c:\users\alex\documents\visual studio 2015\Projects\Pharma Man\Pharma Man\obj\Debug\App.g.cs
+c:\users\alex\documents\visual studio 2015\Projects\Pharma Man\Pharma Man\obj\Debug\Pharma Man_MarkupCompile.cache
+c:\users\alex\documents\visual studio 2015\Projects\Pharma Man\Pharma Man\obj\Debug\Pharma Man_MarkupCompile.lref
+c:\users\alex\documents\visual studio 2015\Projects\Pharma Man\Pharma Man\obj\Debug\Besuchsplan.baml
+c:\users\alex\documents\visual studio 2015\Projects\Pharma Man\Pharma Man\obj\Debug\MainWindow.baml
+c:\users\alex\documents\visual studio 2015\Projects\Pharma Man\Pharma Man\obj\Debug\Pharma Man.g.resources
+c:\users\alex\documents\visual studio 2015\Projects\Pharma Man\Pharma Man\obj\Debug\Pharma_Man.Properties.Resources.resources
+c:\users\alex\documents\visual studio 2015\Projects\Pharma Man\Pharma Man\obj\Debug\Pharma Man.csproj.GenerateResource.Cache
+c:\users\alex\documents\visual studio 2015\Projects\Pharma Man\Pharma Man\obj\Debug\Pharma Man.exe
+c:\users\alex\documents\visual studio 2015\Projects\Pharma Man\Pharma Man\obj\Debug\Pharma Man.pdb
+c:\users\alex\documents\visual studio 2015\Projects\Pharma Man\Pharma Man\obj\Debug\Tagesplan.g.cs
+c:\users\alex\documents\visual studio 2015\Projects\Pharma Man\Pharma Man\obj\Debug\Tagesplan.baml
+C:\Users\Alex\Documents\Visual Studio 2015\Projects\Pharma Man\Pharma Man\obj\Debug\BesuchsplanErfassen.g.cs
+C:\Users\Alex\Documents\Visual Studio 2015\Projects\Pharma Man\Pharma Man\obj\Debug\BesuchsplanErfassen.baml
+H:\git\evela_web_git\Pharma Man\bin\Debug\Pharma Man.exe.config
+H:\git\evela_web_git\Pharma Man\obj\Debug\Pharma Man.exe
+H:\git\evela_web_git\Pharma Man\obj\Debug\Pharma Man.pdb
