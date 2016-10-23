@@ -21,3 +21,43 @@ C:\Users\Alex\Documents\Visual Studio 2015\Projects\Pharma Man\Pharma Man\obj\De
 H:\git\evela_web_git\Pharma Man\bin\Debug\Pharma Man.exe.config
 H:\git\evela_web_git\Pharma Man\obj\Debug\Pharma Man.exe
 H:\git\evela_web_git\Pharma Man\obj\Debug\Pharma Man.pdb
+H:\git\evela_web_git\Pharma Man\bin\Debug\Pharma Man.exe
+H:\git\evela_web_git\Pharma Man\bin\Debug\Pharma Man.pdb
+H:\git\evela_web_git\Pharma Man\bin\Debug\GMap.NET.Core.dll
+H:\git\evela_web_git\Pharma Man\bin\Debug\GMap.NET.WindowsForms.dll
+H:\git\evela_web_git\Pharma Man\bin\Debug\GMap.NET.WindowsPresentation.dll
+H:\git\evela_web_git\Pharma Man\bin\Debug\GMap.NET.Core.xml
+H:\git\evela_web_git\Pharma Man\bin\Debug\GMap.NET.WindowsForms.xml
+H:\git\evela_web_git\Pharma Man\bin\Debug\GMap.NET.WindowsPresentation.xml
+H:\git\evela_web_git\Pharma Man\obj\Debug\Pharma Man.csprojResolveAssemblyReference.cache
+H:\git\evela_web_git\Pharma Man\obj\Debug\Besuchsplan.g.cs
+H:\git\evela_web_git\Pharma Man\obj\Debug\BesuchsplanErfassen.g.cs
+H:\git\evela_web_git\Pharma Man\obj\Debug\MainWindow.g.cs
+H:\git\evela_web_git\Pharma Man\obj\Debug\Tagesplan.g.cs
+H:\git\evela_web_git\Pharma Man\obj\Debug\App.g.cs
+H:\git\evela_web_git\Pharma Man\obj\Debug\GeneratedInternalTypeHelper.g.cs
+H:\git\evela_web_git\Pharma Man\obj\Debug\Pharma Man_MarkupCompile.cache
+H:\git\evela_web_git\Pharma Man\obj\Debug\Pharma Man_MarkupCompile.lref
+H:\git\evela_web_git\Pharma Man\obj\Debug\Besuchsplan.baml
+H:\git\evela_web_git\Pharma Man\obj\Debug\BesuchsplanErfassen.baml
+H:\git\evela_web_git\Pharma Man\obj\Debug\MainWindow.baml
+H:\git\evela_web_git\Pharma Man\obj\Debug\Tagesplan.baml
+H:\git\evela_web_git\Pharma Man\obj\Debug\Pharma Man.g.resources
+H:\git\evela_web_git\Pharma Man\obj\Debug\Pharma_Man.Properties.Resources.resources
+H:\git\evela_web_git\Pharma Man\obj\Debug\Pharma Man.csproj.GenerateResource.Cache
+H:\git\evela_web_git\Pharma Man\bin\Debug\Google.Protobuf.dll
+H:\git\evela_web_git\Pharma Man\bin\Debug\S2Geometry.dll
+H:\git\evela_web_git\Pharma Man\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
+H:\git\evela_web_git\Pharma Man\bin\Debug\Google.Protobuf.xml
+H:\git\evela_web_git\Pharma Man\bin\Debug\S2Geometry.xml
+H:\git\evela_web_git\Pharma Man\bin\Debug\System.Windows.Interactivity.dll
+H:\git\evela_web_git\Pharma Man\bin\Debug\de\System.Windows.Interactivity.resources.dll
+H:\git\evela_web_git\Pharma Man\bin\Debug\en\System.Windows.Interactivity.resources.dll
+H:\git\evela_web_git\Pharma Man\bin\Debug\es\System.Windows.Interactivity.resources.dll
+H:\git\evela_web_git\Pharma Man\bin\Debug\fr\System.Windows.Interactivity.resources.dll
+H:\git\evela_web_git\Pharma Man\bin\Debug\it\System.Windows.Interactivity.resources.dll
+H:\git\evela_web_git\Pharma Man\bin\Debug\ja\System.Windows.Interactivity.resources.dll
+H:\git\evela_web_git\Pharma Man\bin\Debug\ko\System.Windows.Interactivity.resources.dll
+H:\git\evela_web_git\Pharma Man\bin\Debug\ru\System.Windows.Interactivity.resources.dll
+H:\git\evela_web_git\Pharma Man\bin\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
+H:\git\evela_web_git\Pharma Man\bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll

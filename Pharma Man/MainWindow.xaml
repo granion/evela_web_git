@@ -5,17 +5,45 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pharma_Man"
         mc:Ignorable="d"
-        Title="MainWindow" Height="720" Width="1024" ResizeMode="NoResize">
-    <Grid>
-        <Frame x:Name="frame" Content="" NavigationUIVisibility="Hidden" Margin="180,0,0,0" Background="#FFA2A2A2"/>
-        <Grid HorizontalAlignment="Left" Height="691" VerticalAlignment="Top" Width="180" Background="#FF323232">
-            <Button x:Name="btn_BesuchErfassen" Content="Besuch erfassen" HorizontalAlignment="Left" Margin="0,102,0,0" VerticalAlignment="Top" Width="180" HorizontalContentAlignment="Left" Click="btn_BesuchErfassen_Click" Height="30"/>
-            <Button x:Name="btn_Besuchsplan" Content="Besuchsplan" HorizontalAlignment="Left" Margin="0,67,0,0" VerticalAlignment="Top" Width="180" HorizontalContentAlignment="Left" Click="btn_Besuchsplan_Click" Height="30"/>
-            <Button x:Name="btn_prev" Content="Zurück" HorizontalAlignment="Left" VerticalAlignment="Top" Width="45" Click="btn_prev_Click" HorizontalContentAlignment="Left"/>
-            <Button x:Name="btn_next" Content="Vor" HorizontalAlignment="Left" Margin="135,0,0,0" VerticalAlignment="Top" Width="45" Click="btn_next_Click" HorizontalContentAlignment="Left"/>
-            <Button x:Name="button" Content="Abrechnung" HorizontalAlignment="Left" Margin="0,137,0,0" VerticalAlignment="Top" Width="180" Height="30" HorizontalContentAlignment="Left"/>
-            <Button x:Name="button_Copy" Content="Ärzteliste" HorizontalAlignment="Left" Margin="0,172,0,0" VerticalAlignment="Top" Width="180" Height="30" HorizontalContentAlignment="Left"/>
+        Title="MainWindow" Height="720" Width="1024" 
+        
+        MinWidth="1024"
+        MinHeight="720"
+        >
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FFFF00F3" MinWidth="800">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="200" MaxWidth="250" Width="*" />
+            <ColumnDefinition MinWidth="500" Width="3*" />
+        </Grid.ColumnDefinitions>
+
+        <Frame Grid.Column="1" x:Name="frame" NavigationUIVisibility="Hidden" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Background="#FF323232"/>
+        <Grid Grid.Column="0" Name="Navigation" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"  Background="#FF272727">
+
+
+            <Border Background="#FF212121" BorderBrush="Transparent" BorderThickness="0" Opacity="1.0">
+                <Border.Effect>
+                    <DropShadowEffect 
+                        ShadowDepth="1"
+                        Opacity="1"
+                        BlurRadius="15" 
+                        Direction="270"/>
+                </Border.Effect>
+            </Border>
+
+
+            <Button x:Name="btn_prev" Content="Zurück" HorizontalAlignment="Stretch" VerticalAlignment="Top"  Click="btn_prev_Click" HorizontalContentAlignment="Left"/>
+            <Button x:Name="btn_next" Content="Vor" HorizontalAlignment="Stretch" Margin="125,0,0,0" VerticalAlignment="Top"  Click="btn_next_Click" HorizontalContentAlignment="Left"/>
+            
+            <Button x:Name="btn_BesuchErfassen" Content="Besuch erfassen" HorizontalAlignment="Stretch" Margin="0,103,0,0" VerticalAlignment="Top"  HorizontalContentAlignment="Left" Click="btn_BesuchErfassen_Click" Height="30"/>
+            <Button x:Name="btn_Besuchsplan" Content="Besuchsplan" HorizontalAlignment="Stretch" Margin="0,67,0,0" VerticalAlignment="Top"  HorizontalContentAlignment="Left" Click="btn_Besuchsplan_Click" Height="30"/>
+            <Button x:Name="btn_Abrechnung" Content="Abrechnung" HorizontalAlignment="Stretch" Margin="0,137,0,0" VerticalAlignment="Top"  Height="30" HorizontalContentAlignment="Left"/>
+            <Button x:Name="btn_Ärzteliste" Content="Ärzteliste" HorizontalAlignment="Stretch" Margin="0,172,0,0" VerticalAlignment="Top"  Height="30" HorizontalContentAlignment="Left"/>
+
+
+
         </Grid>
 
+        
+        
     </Grid>
 </Window>

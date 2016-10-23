@@ -5,13 +5,22 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Pharma_Man"
       mc:Ignorable="d" 
+      
       d:DesignHeight="700" d:DesignWidth="844"
+     
+      
       Title="Besuchsplan">
 
-    <Grid Background="#FF34FF59">
-        <Label x:Name="page_caption" Content="Besuchsplanung" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontSize="48" Foreground="White"/>
-        <Viewbox HorizontalAlignment="Left" Height="607" Margin="18,74,0,0" VerticalAlignment="Top" Width="779">
-            <Calendar x:Name="calendar" SelectedDatesChanged="calendar_SelectedDatesChanged" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="White"/>
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <Label Grid.Row="0" x:Name="page_caption" Content="Besuchsplanung" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontSize="48" Foreground="White"/>
+        
+        <Viewbox Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+            <Calendar x:Name="calendar" SelectedDatesChanged="calendar_SelectedDatesChanged" BorderBrush="{x:Null}" Background="#FF75C335" Foreground="White"/>
         </Viewbox>
 
     </Grid>
