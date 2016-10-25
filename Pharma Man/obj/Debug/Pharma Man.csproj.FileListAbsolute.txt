@@ -106,3 +106,6 @@ C:\Users\hausera\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Pharma_Man.
 C:\Users\hausera\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Pharma Man.csproj.GenerateResource.Cache
 C:\Users\hausera\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Pharma Man.exe
 C:\Users\hausera\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Pharma Man.pdb
+C:\Users\Vladi\Source\Repos\evela_web_git\evela_web_git\Pharma Man\bin\Debug\Pharma Man.exe.config
+C:\Users\Vladi\Source\Repos\evela_web_git\evela_web_git\Pharma Man\obj\Debug\Pharma Man.exe
+C:\Users\Vladi\Source\Repos\evela_web_git\evela_web_git\Pharma Man\obj\Debug\Pharma Man.pdb
