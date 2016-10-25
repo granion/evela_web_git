@@ -107,9 +107,11 @@
     </ApplicationDefinition>
     <Compile Include="Core\Benutzer.cs" />
     <Compile Include="Core\Bestellung.cs" />
+    <Compile Include="Core\Besuch.cs" />
     <Compile Include="Core\Produkt\Infomaterial.cs" />
     <Compile Include="Core\Produkt\Werbegeschenk.cs" />
     <Compile Include="Core\Referent.cs" />
+    <Compile Include="Core\Regionalleiter.cs" />
     <Compile Include="Pages\Besuch erfassen.xaml.cs">
       <DependentUpon>Besuch erfassen.xaml</DependentUpon>
     </Compile>

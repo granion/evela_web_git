@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Pharma_Man
 {
-    class Benutzer
+    public class Benutzer
     {
 
         private int id;
