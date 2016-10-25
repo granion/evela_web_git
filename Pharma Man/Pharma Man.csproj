@@ -105,6 +105,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="controls\PDFCreator.cs" />
     <Compile Include="Core\Benutzer.cs" />
     <Compile Include="Core\Bestellung.cs" />
     <Compile Include="Core\Besuch.cs" />
