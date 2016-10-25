@@ -1,10 +1,10 @@
-﻿<Page x:Class="Pharma_Man.Tagesplan"
+﻿<Page x:Class="Pharma_Man.Pages.Tagesplan"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Pharma_Man"
-      xmlns:map="clr-namespace:Pharma_Man"
+      xmlns:local="clr-namespace:Pharma_Man.Pages"
+      xmlns:map="clr-namespace:Pharma_Man.controls"
       
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="844"

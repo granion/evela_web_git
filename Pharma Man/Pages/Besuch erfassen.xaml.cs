@@ -13,15 +13,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Pharma_Man
-{
+namespace Pharma_Man.Pages {
     /// <summary>
-    /// Interaktionslogik für BesuchsplanErfassen.xaml
+    /// Interaktionslogik für Besuch_erfassen.xaml
     /// </summary>
-    public partial class BesuchsplanErfassen : Page
-    {
-        public BesuchsplanErfassen()
-        {
+    public partial class Besuch_erfassen : Page {
+        public Besuch_erfassen() {
             InitializeComponent();
         }
     }

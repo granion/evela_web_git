@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-H:\git\evela_web_git\Pharma Man\obj\Debug\
+C:\Users\hausera\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\
 Pharma_Man
 none
 false
 DEBUG;TRACE
-H:\git\evela_web_git\Pharma Man\App.xaml
-4536414112
+C:\Users\hausera\Documents\GitHub\evela_web_git\Pharma Man\App.xaml
+51975345185
 
-181389910652
-75500276775
-Besuchsplan.xaml;BesuchsplanErfassen.xaml;MainWindow.xaml;Tagesplan.xaml;
+23-993756242
+75192611453
+Pages\Besuch erfassen.xaml;Pages\Besuchsplanung.xaml;Pages\Besuchserfassung.xaml;MainWindow.xaml;Pages\Tagesplanung.xaml;
 
 False
 

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pharma_Man
+namespace Pharma_Man.Core
 {
     public class Arzt
     {
@@ -17,12 +17,16 @@ namespace Pharma_Man
         private Adresse adresse;
         public Adresse Adresse { get { return adresse; } }
 
+        private int priorität;
+        public int Priorität { get { return priorität; } }
 
-        public Arzt(int id, string name, Adresse adresse)
+
+        public Arzt(int id, string name, Adresse adresse, int prio)
         {
             this.id = id;
             this.name = name;
             this.adresse = adresse;
+            this.priorität = prio;
         }
 
 

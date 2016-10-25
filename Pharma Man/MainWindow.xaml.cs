@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using Pharma_Man.Pages;
+
 
 
 namespace Pharma_Man
@@ -25,6 +27,7 @@ namespace Pharma_Man
 
         Besuchsplan bp;
         BesuchsplanErfassen bpe;
+        Data.Datenbank db;
 
         public MainWindow()
         {
@@ -34,6 +37,8 @@ namespace Pharma_Man
             bpe = new BesuchsplanErfassen();
 
             frame.NavigationService.Navigate(bp);
+
+            db = Data.Datenbank.Instance;
         }
 
         private void btn_next_Click(object sender, RoutedEventArgs e)

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pharma_Man
+namespace Pharma_Man.Core
 {
     public class Adresse
     {
@@ -20,15 +20,17 @@ namespace Pharma_Man
         private string ort;
         public string Ort{get { return ort; }}
 
-        public Adresse(int plz, string straße, int hausNr, string ort)
+        private string zusatz;
+        public string Zusatz{get { return zusatz; }}
+
+
+        public Adresse(int plz, string straße, int hausNr, string ort, string zusatz=null)
         {
             this.plz = plz;
             this.straße = straße;
             this.hausNr = hausNr;
             this.ort = ort;
+            this.zusatz = zusatz;
         }
-
-
-
     }
 }

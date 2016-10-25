@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Pharma_Man
+namespace Pharma_Man.Pages
 {
     /// <summary>
     /// Interaktionslogik für Besuchsplan.xaml

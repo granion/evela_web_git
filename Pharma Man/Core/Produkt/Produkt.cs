@@ -4,9 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pharma_Man.classes
-{
-    class Besuchsplan
-    {
+namespace Pharma_Man {
+    public class Produkt {
     }
 }

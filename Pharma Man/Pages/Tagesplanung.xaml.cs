@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 using GMap.NET;
 using GMap.NET.MapProviders;
 
-namespace Pharma_Man
+namespace Pharma_Man.Pages
 {
     /// <summary>
     /// Interaktionslogik für Tagesplan.xaml
@@ -48,7 +48,7 @@ namespace Pharma_Man
 
             //Load Map
             // config map
-            MainMap.MapProvider = GMapProviders.BingHybridMap;
+            MainMap.MapProvider = GMapProviders.GoogleMap;
             MainMap.Zoom = 15;
             MainMap.Position = new PointLatLng(49.351491, 9.143293);
 

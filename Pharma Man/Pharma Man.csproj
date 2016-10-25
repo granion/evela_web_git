@@ -84,23 +84,34 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="BesuchsplanErfassen.xaml.cs">
-      <DependentUpon>BesuchsplanErfassen.xaml</DependentUpon>
+    <Compile Include="Pages\Besuch erfassen.xaml.cs">
+      <DependentUpon>Besuch erfassen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="classes\Adresse.cs" />
-    <Compile Include="classes\Arzt.cs" />
-    <Compile Include="classes\Besuchsplan.cs" />
-    <Compile Include="classes\Tagesplan.cs" />
-    <Compile Include="data\ÄrzteData.cs" />
-    <Compile Include="Map.cs" />
-    <Compile Include="Tagesplan.xaml.cs">
-      <DependentUpon>Tagesplan.xaml</DependentUpon>
+    <Compile Include="Pages\Besuchserfassung.xaml.cs">
+      <DependentUpon>Besuchserfassung.xaml</DependentUpon>
     </Compile>
-    <Page Include="Besuchsplan.xaml">
+    <Compile Include="Core\Adresse.cs" />
+    <Compile Include="Core\Arzt.cs" />
+    <Compile Include="Core\Besuchsplan.cs" />
+    <Compile Include="Core\Gebiet.cs" />
+    <Compile Include="Core\Produkt\Infobrochure.cs" />
+    <Compile Include="Core\Produkt\Produkt.cs" />
+    <Compile Include="Core\Produkt\Ärztemuster.cs" />
+    <Compile Include="Core\Tagesplan.cs" />
+    <Compile Include="Data\Datenbank.cs" />
+    <Compile Include="controls\Map.cs" />
+    <Compile Include="Pages\Tagesplanung.xaml.cs">
+      <DependentUpon>Tagesplanung.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Pages\Besuch erfassen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="BesuchsplanErfassen.xaml">
+    <Page Include="Pages\Besuchsplanung.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Besuchserfassung.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -112,14 +123,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Besuchsplan.xaml.cs">
-      <DependentUpon>Besuchsplan.xaml</DependentUpon>
+    <Compile Include="Pages\Besuchsplanung.xaml.cs">
+      <DependentUpon>Besuchsplanung.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Tagesplan.xaml">
+    <Page Include="Pages\Tagesplanung.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

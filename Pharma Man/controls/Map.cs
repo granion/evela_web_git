@@ -6,7 +6,7 @@
     using System.Windows;
     using System;
 
-namespace Pharma_Man
+namespace Pharma_Man.controls
 {
     /// <summary>
     /// the custom map f GMapControl 
