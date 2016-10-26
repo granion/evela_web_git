@@ -40,6 +40,22 @@ namespace Pharma_Man.Pages {
     /// </summary>
     public partial class Besuch_erfassen : System.Windows.Controls.Page, System.Windows.Markup.IComponentConnector {
         
+        
+        #line 17 "..\..\..\Pages\Besuch erfassen.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Label page_caption;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 20 "..\..\..\Pages\Besuch erfassen.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Calendar calendar;
+        
+        #line default
+        #line hidden
+        
         private bool _contentLoaded;
         
         /// <summary>
@@ -68,6 +84,21 @@ namespace Pharma_Man.Pages {
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1800:DoNotCastUnnecessarily")]
         void System.Windows.Markup.IComponentConnector.Connect(int connectionId, object target) {
+            switch (connectionId)
+            {
+            case 1:
+            this.page_caption = ((System.Windows.Controls.Label)(target));
+            return;
+            case 2:
+            this.calendar = ((System.Windows.Controls.Calendar)(target));
+            
+            #line 20 "..\..\..\Pages\Besuch erfassen.xaml"
+            this.calendar.SelectedDatesChanged += new System.EventHandler<System.Windows.Controls.SelectionChangedEventArgs>(this.calendar_SelectedDatesChanged);
+            
+            #line default
+            #line hidden
+            return;
+            }
             this._contentLoaded = true;
         }
     }

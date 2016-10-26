@@ -86,7 +86,6 @@ C:\Users\hausera\Documents\GitHub\evela_web_git\Pharma Man\bin\Debug\ko\System.W
 C:\Users\hausera\Documents\GitHub\evela_web_git\Pharma Man\bin\Debug\ru\System.Windows.Interactivity.resources.dll
 C:\Users\hausera\Documents\GitHub\evela_web_git\Pharma Man\bin\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
 C:\Users\hausera\Documents\GitHub\evela_web_git\Pharma Man\bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll
-C:\Users\hausera\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Pharma Man.csprojResolveAssemblyReference.cache
 C:\Users\hausera\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Pages\Besuch erfassen.g.cs
 C:\Users\hausera\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Pages\Besuchsplanung.g.cs
 C:\Users\hausera\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Pages\Besuchserfassung.g.cs
@@ -217,3 +216,16 @@ C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Pharma_Man.Pro
 C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Pharma Man.csproj.GenerateResource.Cache
 C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Styles\Resources.baml
 C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Pharma Man.csprojResolveAssemblyReference.cache
+C:\Users\hausera\Documents\GitHub\evela_web_git\Pharma Man\bin\Debug\MigraDoc.DocumentObjectModel-WPF.dll
+C:\Users\hausera\Documents\GitHub\evela_web_git\Pharma Man\bin\Debug\MigraDoc.Rendering-WPF.dll
+C:\Users\hausera\Documents\GitHub\evela_web_git\Pharma Man\bin\Debug\MigraDoc.RtfRendering-WPF.dll
+C:\Users\hausera\Documents\GitHub\evela_web_git\Pharma Man\bin\Debug\PdfSharp-WPF.dll
+C:\Users\hausera\Documents\GitHub\evela_web_git\Pharma Man\bin\Debug\PdfSharp.Charting-WPF.dll
+C:\Users\hausera\Documents\GitHub\evela_web_git\Pharma Man\bin\Debug\de\MigraDoc.DocumentObjectModel-WPF.resources.dll
+C:\Users\hausera\Documents\GitHub\evela_web_git\Pharma Man\bin\Debug\de\MigraDoc.Rendering-WPF.resources.dll
+C:\Users\hausera\Documents\GitHub\evela_web_git\Pharma Man\bin\Debug\de\MigraDoc.RtfRendering-WPF.resources.dll
+C:\Users\hausera\Documents\GitHub\evela_web_git\Pharma Man\bin\Debug\de\PdfSharp-WPF.resources.dll
+C:\Users\hausera\Documents\GitHub\evela_web_git\Pharma Man\bin\Debug\de\PdfSharp.Charting-WPF.resources.dll
+C:\Users\hausera\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Styles\Resources.baml
+C:\Users\hausera\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\UserControls\NavigationButton.g.cs
+C:\Users\hausera\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\UserControls\NavigationButton.baml

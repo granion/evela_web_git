@@ -48,7 +48,7 @@ namespace Pharma_Man.Pages
 
             //Load Map
             // config map
-            MainMap.MapProvider = GMapProviders.GoogleMap;
+            MainMap.MapProvider = GMapProviders.BingHybridMap;
             MainMap.Zoom = 15;
             MainMap.Position = new PointLatLng(49.351491, 9.143293);
 
