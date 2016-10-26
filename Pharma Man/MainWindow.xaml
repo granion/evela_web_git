@@ -13,7 +13,7 @@
         >
 
     <Window.Resources>
-        <ResourceDictionary Source="Styles\Resources.xaml" />
+        <ResourceDictionary Source="Resources.xaml" />
     </Window.Resources>
 
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FFFF00F3" MinWidth="800">
