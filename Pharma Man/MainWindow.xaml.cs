@@ -57,12 +57,12 @@ namespace Pharma_Man
             }
         }
 
-        private void btn_Besuchsplan_Click(object sender, RoutedEventArgs e)
+        private void btn_Besuchsplanung_Click(object sender, RoutedEventArgs e)
         {
             frame.NavigationService.Navigate(bp);
         }
 
-        private void btn_BesuchErfassen_Click(object sender, RoutedEventArgs e)
+        private void btn_Besuchserfassung_Click(object sender, RoutedEventArgs e)
         {
             frame.NavigationService.Navigate(bpe);
         }

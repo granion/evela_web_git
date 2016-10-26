@@ -50,7 +50,11 @@
                 <Label x:Name="map_caption" Content="Karte" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="30" FontSize="18" Foreground="White"/>
 
                 <Grid Grid.Column="2" Margin="0,30,0,50">
-                    <map:Map Grid.Column="1" x:Name="MainMap" Zoom="10" MaxZoom="18" MinZoom="3" />
+                    <map:Map Grid.Column="1" x:Name="MainMap" Zoom="10" MaxZoom="18" MinZoom="3" >
+                        <map:Map.CacheMode>
+                            <BitmapCache/>
+                        </map:Map.CacheMode>
+                    </map:Map>
                 </Grid>
 
                 <Label x:Name="label1" Content="Fahrtdistanz: 30km" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Foreground="White" Margin="0,0,0,24"/>

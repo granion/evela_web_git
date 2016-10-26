@@ -42,7 +42,7 @@ namespace Pharma_Man.Pages
             List<CustomItem> items = new List<CustomItem>();
             items.Add(new CustomItem() { Title = "Complete this WPF tutorial", Completion = 45 });
             items.Add(new CustomItem() { Title = "Learn C#", Completion = 80 });
-            items.Add(new CustomItem() { Title = "Wash the car", Completion = 0 });
+            items.Add(new CustomItem() { Title = "Wash the car", Completion = 0});
 
             docList.ItemsSource = items;
 
