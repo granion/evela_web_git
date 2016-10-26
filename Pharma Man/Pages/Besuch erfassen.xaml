@@ -1,0 +1,40 @@
+﻿<Page x:Class="Pharma_Man.Pages.Besuch_erfassen"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Pharma_Man.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="844"
+      Title="Besuch erfassen">
+
+    <Page.Resources>
+        <ResourceDictionary Source="Resources.xaml" />
+    </Page.Resources>
+
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" x:Name="page_caption" Content="Besuch erfassen" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontSize="48" Foreground="White"/>
+
+        <Grid Grid.Row="1" >
+            <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="10,57,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="365"/>
+            <Label x:Name="label" Content="Thema" Style="{StaticResource Label_Name}"  />
+            <RichTextBox x:Name="rtb_Notizen" HorizontalAlignment="Left" Height="100" Margin="10,219,0,0" VerticalAlignment="Top" Width="365">
+                <FlowDocument>
+                    <Paragraph>
+                        <Run Text="RichTextBox"/>
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox>
+            <Label x:Name="label_Copy" Content="Thema" HorizontalAlignment="Left" Margin="10,191,0,0" VerticalAlignment="Top" Foreground="White"/>
+
+
+
+        </Grid>
+
+    </Grid>
+</Page>
