@@ -10,54 +10,81 @@
       d:DesignHeight="700" d:DesignWidth="844"
       Title="Tagesplan">
 
+    <Grid x:Name="Grid_Page">
+        <Grid x:Name="Grid_Modal" Panel.ZIndex="2" Visibility="Hidden">
+            <Rectangle Panel.ZIndex="2" Fill="#FFFF2E00" Stroke="Black" StrokeThickness="0" Opacity="0.5" />
+            <Grid x:Name="Grid_ModalContent" Panel.ZIndex="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
-    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,0,10,10">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="100" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="0" x:Name="lbl_pageCaption" Content="SEITEN NAME" HorizontalAlignment="Left"  VerticalAlignment="Top" FontSize="48" Foreground="White" />
-        <Label Grid.Row="0" x:Name="lbl_date" Content="DATUM" HorizontalAlignment="Left" Margin="8,60,0,0" VerticalAlignment="Top" FontSize="24" Foreground="White" Grid.RowSpan="2"/>
+                <Rectangle Grid.Column="1" Grid.Row="1" Panel.ZIndex="4" Fill="#FF00FFF3" Opacity="0.5" />
+            </Grid>
+        </Grid>
 
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="10" />
-                <ColumnDefinition Width="300" />
-                <ColumnDefinition Width="10" />
-                <ColumnDefinition MinWidth="400" Width="3*" />
-            </Grid.ColumnDefinitions>
+        <Grid x:Name="Grid_Content" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,0,10,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
+            <Label Grid.Row="0" x:Name="lbl_pageCaption" Content="SEITEN NAME" HorizontalAlignment="Left"  VerticalAlignment="Top" FontSize="48" Foreground="White" />
+            <Label Grid.Row="0" x:Name="lbl_date" Content="DATUM" HorizontalAlignment="Left" Margin="8,60,0,0" VerticalAlignment="Top" FontSize="24" Foreground="White" Grid.RowSpan="2"/>
 
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10" />
+                    <ColumnDefinition Width="400" />
+                    <ColumnDefinition Width="10" />
+                    <ColumnDefinition MinWidth="400" Width="3*" />
+                </Grid.ColumnDefinitions>
 
-            <Label Grid.Column="1" x:Name="docList_caption" Content="Ärzteliste" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="30" FontSize="18" Foreground="White" Margin="-4,0,4,0"/>
-            <ListBox Grid.Column="1" x:Name="docList" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="Black" Background="#FFEAEAEA" Margin="0,30,0,50">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Grid Margin="0,2">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="100" />
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Text="{Binding Title}" />
-                            <ProgressBar Grid.Column="1" Minimum="0" Maximum="100" Value="{Binding Completion}" />
-                        </Grid>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                <Grid Grid.Column="1">
+                    <Label x:Name="docList_caption" Content="Ärzteliste" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="30" FontSize="18" Foreground="White" Margin="-4,0,4,0"/>
+                    <ListBox x:Name="docList" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="Black" Background="#FFEAEAEA" Margin="0,30,0,50">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="0,0,0,2" Background="#FF0ACF37" Height="50">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="294"/>
+                                        <ColumnDefinition Width="50"/>
+                                        <ColumnDefinition Width="50"/>
+                                    </Grid.ColumnDefinitions>
 
-            <Grid Grid.Column="3" Name="map_container">
-                <Label x:Name="map_caption" Content="Karte" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="30" FontSize="18" Foreground="White"/>
+                                    <TextBlock Grid.Column="0" Text="{Binding Besuch.Arzt.Name}" FontSize="30" VerticalAlignment="Center" Margin="5,0,0,0" />
+                                    <Button Grid.Column="1" Content="Dauer"/>
+                                    <Button Grid.Column="2" Content="Lock"/>
+                                    
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
 
-                <Grid Grid.Column="2" Margin="0,30,0,50">
-                    <map:Map Grid.Column="1" x:Name="MainMap" Zoom="10" MaxZoom="18" MinZoom="3" >
-                        <map:Map.CacheMode>
-                            <BitmapCache/>
-                        </map:Map.CacheMode>
-                    </map:Map>
                 </Grid>
 
-                <Label x:Name="label1" Content="Fahrtdistanz: 30km" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Foreground="White" Margin="0,0,0,24"/>
+                
+                <Grid Grid.Column="3" Name="map_container">
+                    <Label x:Name="map_caption" Content="Karte" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="30" FontSize="18" Foreground="White"/>
+
+                    <Grid Grid.Column="2" Margin="0,30,0,50">
+                        <map:Map Grid.Column="1" x:Name="MainMap" Zoom="10" MaxZoom="18" MinZoom="3" >
+                            <map:Map.CacheMode>
+                                <BitmapCache/>
+                            </map:Map.CacheMode>
+                        </map:Map>
+                    </Grid>
+
+                    <Label x:Name="label1" Content="Fahrtdistanz: 30km" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Foreground="White" Margin="0,0,0,24"/>
+                </Grid>
+
             </Grid>
         </Grid>
     </Grid>

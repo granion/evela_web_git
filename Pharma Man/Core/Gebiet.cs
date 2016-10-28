@@ -24,6 +24,12 @@ namespace Pharma_Man.Core {
             ärzte.Add(arzt.ID , arzt);
         }
 
+        public Dictionary<int,Arzt> GetÄrzte() {
+            return ärzte;
+        }
+
+
+
 
 
     }
