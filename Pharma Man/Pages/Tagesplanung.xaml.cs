@@ -39,10 +39,11 @@ namespace Pharma_Man.Pages
             docList.Items.Add(itm);
             */
 
-            List<CustomItem> items = new List<CustomItem>();
-            items.Add(new CustomItem() { Title = "Complete this WPF tutorial", Completion = 45 });
-            items.Add(new CustomItem() { Title = "Learn C#", Completion = 80 });
-            items.Add(new CustomItem() { Title = "Wash the car", Completion = 0});
+
+            List<BesuchItem> items = new List<BesuchItem>();
+            items.Add(new BesuchItem( new Core.Besuch( Data.Datenbank.Instance.GetBesuchID(), Data.Datenbank.Instance.GetArzt(1) )));
+            items.Add(new BesuchItem( new Core.Besuch( Data.Datenbank.Instance.GetBesuchID(), Data.Datenbank.Instance.GetArzt(2) )));
+            items.Add(new BesuchItem( new Core.Besuch( Data.Datenbank.Instance.GetBesuchID(), Data.Datenbank.Instance.GetArzt(3) )));
 
             docList.ItemsSource = items;
 
@@ -55,9 +56,15 @@ namespace Pharma_Man.Pages
         }
     }
 
-    public class CustomItem
-    {
-        public string Title { get; set; }
-        public int Completion { get; set; }
+    //Wrapper um Items sperren ('locken') zu können
+    public class BesuchItem {
+        public bool locked = false;
+
+        private Core.Besuch besuch;
+        public Core.Besuch Besuch { get { return besuch; } }
+
+        public BesuchItem(Core.Besuch besuch) {
+            this.besuch = besuch;
+        }
     }
 }

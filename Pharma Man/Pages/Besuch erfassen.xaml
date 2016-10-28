@@ -18,11 +18,12 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" x:Name="page_caption" Content="Besuch erfassen" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontSize="48" Foreground="White"/>
+        <Label Grid.Row="0" x:Name="page_caption" Content="Besuch erfassen" Margin="10,0,0,0" Style="{StaticResource Label_PageCaption}"/>
 
         <Grid Grid.Row="1" >
             <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="10,57,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="365"/>
-            <Label x:Name="label" Content="Thema" Style="{StaticResource Label_Name}"  />
+            <Label x:Name="label" Content="Thema" Style="{StaticResource Label_Name}" HorizontalAlignment="Left" VerticalAlignment="Top"  />
+            
             <RichTextBox x:Name="rtb_Notizen" HorizontalAlignment="Left" Height="100" Margin="10,219,0,0" VerticalAlignment="Top" Width="365">
                 <FlowDocument>
                     <Paragraph>
