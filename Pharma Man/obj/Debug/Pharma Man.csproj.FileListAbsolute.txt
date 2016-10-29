@@ -214,8 +214,6 @@ C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Pages\Tagespla
 C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Pharma Man.g.resources
 C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Pharma_Man.Properties.Resources.resources
 C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Pharma Man.csproj.GenerateResource.Cache
-C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Styles\Resources.baml
-C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Pharma Man.csprojResolveAssemblyReference.cache
 C:\Users\hausera\Documents\GitHub\evela_web_git\Pharma Man\bin\Debug\MigraDoc.DocumentObjectModel-WPF.dll
 C:\Users\hausera\Documents\GitHub\evela_web_git\Pharma Man\bin\Debug\MigraDoc.Rendering-WPF.dll
 C:\Users\hausera\Documents\GitHub\evela_web_git\Pharma Man\bin\Debug\MigraDoc.RtfRendering-WPF.dll
@@ -230,3 +228,6 @@ C:\Users\hausera\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\UserControl
 C:\Users\hausera\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\UserControls\NavigationButton.baml
 C:\Users\hausera\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Pharma Man.csprojResolveAssemblyReference.cache
 C:\Users\hausera\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Resources.baml
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\UserControls\NavigationButton.g.cs
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Resources.baml
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\UserControls\NavigationButton.baml
