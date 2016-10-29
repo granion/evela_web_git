@@ -66,5 +66,11 @@ namespace Pharma_Man
         {
             frame.NavigationService.Navigate(bpe);
         }
+
+        private void btn_Ärzteliste_Click(object sender, RoutedEventArgs e)
+        {
+            Besuch_erfassen be = new Besuch_erfassen();
+            frame.NavigationService.Navigate(be);
+        }
     }
 }

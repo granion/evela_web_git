@@ -9,7 +9,7 @@
       Title="Besuch erfassen">
 
     <Page.Resources>
-        <ResourceDictionary Source="Resources.xaml" />
+        <ResourceDictionary Source="../Resources.xaml" />
     </Page.Resources>
 
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10">
@@ -21,21 +21,45 @@
         <Label Grid.Row="0" x:Name="page_caption" Content="Besuch erfassen" Margin="10,0,0,0" Style="{StaticResource Label_PageCaption}"/>
 
         <Grid Grid.Row="1" >
-            <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="10,57,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="365"/>
-            <Label x:Name="label" Content="Thema" Style="{StaticResource Label_Name}" HorizontalAlignment="Left" VerticalAlignment="Top"  />
-            
-            <RichTextBox x:Name="rtb_Notizen" HorizontalAlignment="Left" Height="100" Margin="10,219,0,0" VerticalAlignment="Top" Width="365">
-                <FlowDocument>
-                    <Paragraph>
-                        <Run Text="RichTextBox"/>
-                    </Paragraph>
-                </FlowDocument>
-            </RichTextBox>
-            <Label x:Name="label_Copy" Content="Thema" HorizontalAlignment="Left" Margin="10,191,0,0" VerticalAlignment="Top" Foreground="White"/>
 
+            <StackPanel x:Name="sp_Zeit" Margin="0,45,0,0" Orientation="Vertical" VerticalAlignment="Top">
+                <Label x:Name="lbl_Zeit" Content="Datum &amp; Zeit" Style="{StaticResource Label_Name}" />
+                <DockPanel HorizontalAlignment="Stretch">
+                    <TextBox x:Name="tb_Zeit" TextWrapping="Wrap" Text="Datum" Width="50" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="tb_Von" TextWrapping="Wrap" Text="Von" Width="50" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+                    <TextBox x:Name="tb_Bis" TextWrapping="Wrap" Text="Bis" Width="50" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+                </DockPanel>
+                
+            </StackPanel>
 
+            <StackPanel x:Name="sp_Thema" Margin="0,95,0,0" Orientation="Vertical" VerticalAlignment="Top">
+                <Label x:Name="lbl_Thema" Content="Thema" Style="{StaticResource Label_Name}" />
+                <TextBox x:Name="tb_Thema" TextWrapping="Wrap" Text="TextBox" />
+            </StackPanel>
+
+            <StackPanel x:Name="sp_SonderbesuchNotiz" Margin="0,155,0,0" Orientation="Vertical" VerticalAlignment="Top">
+                <Label x:Name="lbl_SonderbesuchNotiz" Content="Sonderbesuch Notiz" Style="{StaticResource Label_Name}" />
+                <TextBox x:Name="tb_SonderbesuchNotiz" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Text="TextBox"  />
+            </StackPanel>
+
+            <StackPanel x:Name="sp_Ärztemuster" Margin="0,255,0,0" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+                <Label x:Name="lbl_Ärztemuster" Content="Ärztemuster &amp; Broschürle :D" Style="{StaticResource Label_Name}"/>
+                <ListBox Height="25" />
+            </StackPanel>
+
+            <StackPanel x:Name="sp_Notizen" Margin="0,355,0,0" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+                <Label x:Name="lbl_Notizen" Content="Notiz" Style="{StaticResource Label_Name}"/>
+                <RichTextBox x:Name="rtb_Notizen" Height="100" >
+                    <FlowDocument>
+                        <Paragraph>
+                            <Run Text="Notizen"/>
+                        </Paragraph>
+                    </FlowDocument>
+                </RichTextBox>
+            </StackPanel>
+            <Button x:Name="btn_Speichern" Content="Beusch speichern" HorizontalAlignment="Left" Margin="0,516,0,0" VerticalAlignment="Top" Width="106"/>
+            <Button x:Name="btn_BesuchAbschließen" Content="Beusch abschließen" HorizontalAlignment="Left" Margin="124,516,0,0" VerticalAlignment="Top" Width="106"/>
 
         </Grid>
-
     </Grid>
 </Page>
