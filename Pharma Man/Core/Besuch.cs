@@ -12,6 +12,9 @@ namespace Pharma_Man.Core
         private int id;
         public int ID { get { return id; } }
 
+        private DateTime datum;
+        public DateTime Datum { get { return datum; } }
+
         private DateTime terminStart;
         public DateTime TerminStart { get { return terminStart; } }
 
@@ -36,6 +39,17 @@ namespace Pharma_Man.Core
 
             //NEW-Alex
             this.arzt = arzt;
+        }
+
+        //Vladi Konstrk für PDF
+
+        public Besuch(int id, DateTime datum, DateTime start, DateTime ende, Produkt[] produkte)
+        {
+            this.id = id;
+            this.datum = datum;
+            this.terminStart = start;
+            this.terminEnde = ende;
+            this.produkte = produkte;
         }
 
         public int calculateDuration(DateTime anfang, DateTime ende)

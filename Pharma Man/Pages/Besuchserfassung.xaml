@@ -8,7 +8,6 @@
       d:DesignHeight="700" d:DesignWidth="844"
       Title="BesuchsplanErfassen" Background="#FF00AEFF">
 
-    <Grid>
-        <Label x:Name="page_caption" Content="Besuch erfassen" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontSize="48" Foreground="White" />
+    <Grid x:Name="grid">
     </Grid>
 </Page>

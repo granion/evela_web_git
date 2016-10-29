@@ -24,5 +24,7 @@ namespace Pharma_Man.Pages
         {
             InitializeComponent();
         }
+
+
     }
 }
