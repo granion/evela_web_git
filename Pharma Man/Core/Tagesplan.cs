@@ -32,6 +32,22 @@ namespace Pharma_Man.Core
         public void UpdateBesuche(List<Besuch> besuche)
         {
             this.besuche = besuche;
+            
+            for(int i=0; i < besuche.Count; i++)
+            {
+                this.besuche[i].UpdateID(i);
+            }
+        }
+
+        public void AddBesuch(Core.Besuch besuch)
+        {
+            besuch.UpdateID(besuche.Count);
+            besuche.Add(besuch);
+        }
+
+        public void UpdateBesuch(int i,Core.Besuch besuch)
+        {
+            //TODO
         }
 
     }

@@ -223,3 +223,4 @@ C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Pharma Man.exe
 C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Pharma Man.pdb
 C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\bin\Debug\Microsoft.Maps.MapControl.WPF.dll
 C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\bin\Debug\Microsoft.Maps.MapControl.WPF.xml
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Pharma Man.csprojResolveAssemblyReference.cache

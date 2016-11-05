@@ -22,44 +22,76 @@
 
         <Grid Grid.Row="1" >
 
-            <StackPanel x:Name="sp_Zeit" Margin="0,45,0,0" Orientation="Vertical" VerticalAlignment="Top">
-                <Label x:Name="lbl_Zeit" Content="Datum &amp; Zeit" Style="{StaticResource Label_Name}" />
-                <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
-                    <TextBox x:Name="tb_Zeit" TextWrapping="Wrap" Text="Datum"  HorizontalAlignment="Left"/>
-                    <TextBox x:Name="tb_Von" TextWrapping="Wrap" Text="Von"  HorizontalAlignment="Left" Margin="5,0,0,0"/>
-                    <TextBox x:Name="tb_Bis" TextWrapping="Wrap" Text="Bis"  HorizontalAlignment="Left" Margin="5,0,0,0"/>
-                </StackPanel>
-                
-            </StackPanel>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" Name="Datum_Zeit"/>
+                    <RowDefinition Height="*" Name="Thema"/>
+                    <RowDefinition Height="*" Name="Notiz_Sonderbesuch"/>
+                    <RowDefinition Height="*" Name="Ärztemuster_Broschüre"/>
+                    <RowDefinition Height="*" Name="Notiz"/>
+                    <RowDefinition Height="auto" Name="BUTTONS"/>
+                </Grid.RowDefinitions>
 
-            <StackPanel x:Name="sp_Thema" Margin="0,95,0,0" Orientation="Vertical" VerticalAlignment="Top">
-                <Label x:Name="lbl_Thema" Content="Thema" Style="{StaticResource Label_Name}" />
-                <TextBox x:Name="tb_Thema" TextWrapping="Wrap" Text="TextBox" />
-            </StackPanel>
+                <!--Datum & Zeit-->
+                <Grid Grid.Row="0">
+                    <StackPanel x:Name="sp_Zeit" Orientation="Vertical" VerticalAlignment="Top">
+                        <Label x:Name="lbl_Zeit" Content="Datum &amp; Zeit" Style="{StaticResource Label_Name}" />
+                        <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
+                            <TextBox x:Name="tb_Zeit" TextWrapping="Wrap" Text="Datum"  HorizontalAlignment="Left"/>
+                            <TextBox x:Name="tb_Von" TextWrapping="Wrap" Text="Von"  HorizontalAlignment="Left" Margin="5,0,0,0"/>
+                            <TextBox x:Name="tb_Bis" TextWrapping="Wrap" Text="Bis"  HorizontalAlignment="Left" Margin="5,0,0,0"/>
+                        </StackPanel>
 
-            <StackPanel x:Name="sp_SonderbesuchNotiz" Margin="0,155,0,0" Orientation="Vertical" VerticalAlignment="Top">
-                <Label x:Name="lbl_SonderbesuchNotiz" Content="Sonderbesuch Notiz" Style="{StaticResource Label_Name}" />
-                <TextBox x:Name="tb_SonderbesuchNotiz" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Text="TextBox"  />
-            </StackPanel>
+                    </StackPanel>
+                </Grid>
 
-            <StackPanel x:Name="sp_Ärztemuster" Margin="0,255,0,0" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Stretch">
-                <Label x:Name="lbl_Ärztemuster" Content="Ärztemuster &amp; Broschürle :D" Style="{StaticResource Label_Name}"/>
-                <ListBox Height="25" />
-            </StackPanel>
+                <!--Thema-->
+                <Grid Grid.Row="1">
+                    <StackPanel x:Name="sp_Thema"  Orientation="Vertical" VerticalAlignment="Top">
+                        <Label x:Name="lbl_Thema" Content="Thema" Style="{StaticResource Label_Name}" />
+                        <TextBox x:Name="tb_Thema" TextWrapping="Wrap" Text="TextBox" />
+                    </StackPanel>
+                </Grid>
 
-            <StackPanel x:Name="sp_Notizen" Margin="0,355,0,0" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Stretch">
-                <Label x:Name="lbl_Notizen" Content="Notiz" Style="{StaticResource Label_Name}"/>
-                <RichTextBox x:Name="rtb_Notizen" Height="100" >
-                    <FlowDocument>
-                        <Paragraph>
-                            <Run Text="Notizen"/>
-                        </Paragraph>
-                    </FlowDocument>
-                </RichTextBox>
-            </StackPanel>
-            <Button x:Name="btn_Speichern" Content="Beusch speichern" HorizontalAlignment="Left" Margin="0,516,0,0" VerticalAlignment="Top" Width="106"/>
-            <Button x:Name="btn_BesuchAbschließen" Content="Beusch abschließen" HorizontalAlignment="Left" Margin="124,516,0,0" VerticalAlignment="Top" Width="106"/>
+                <!--Sonderbesuch Notiz-->
+                <Grid Grid.Row="2">
+                    <StackPanel x:Name="sp_SonderbesuchNotiz" Orientation="Vertical" VerticalAlignment="Top">
+                        <Label x:Name="lbl_SonderbesuchNotiz" Content="Sonderbesuch Notiz" Style="{StaticResource Label_Name}" />
+                        <TextBox x:Name="tb_SonderbesuchNotiz" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Text="TextBox"  />
+                    </StackPanel>
+                </Grid>
 
+                <!--Ärztemuster & Broschüre-->
+                <Grid Grid.Row="3">
+                    <StackPanel x:Name="sp_Ärztemuster"  Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+                        <Label x:Name="lbl_Ärztemuster" Content="Ärztemuster &amp; Broschürle :D" Style="{StaticResource Label_Name}"/>
+                        <ListBox Height="25" />
+                    </StackPanel>
+                </Grid>
+
+                <!--Notiz-->
+                <Grid Grid.Row="4">
+                    <StackPanel x:Name="sp_Notizen" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+                        <Label x:Name="lbl_Notizen" Content="Notiz" Style="{StaticResource Label_Name}"/>
+                        <RichTextBox x:Name="rtb_Notizen" Height="100" >
+                            <FlowDocument>
+                                <Paragraph>
+                                    <Run Text="Notizen"/>
+                                </Paragraph>
+                            </FlowDocument>
+                        </RichTextBox>
+                    </StackPanel>
+                </Grid>
+
+                <!--Buttons-->
+                <Grid Grid.Row="5">
+                    <Grid Name="Grid_Buttons" Margin="0,20">
+                        <Button x:Name="btn_Speichern" Content="Besuch speichern" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Width="auto" Height="50"/>
+                        <Button x:Name="btn_BesuchAbschließen" Content="Besuch abschließen" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="auto" Height="50" Margin="150,0,0,0"/>
+                    </Grid>
+                </Grid>
+
+            </Grid>
         </Grid>
     </Grid>
 </Page>

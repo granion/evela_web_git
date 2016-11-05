@@ -151,7 +151,7 @@ namespace Pharma_Man.Pages
             foreach (var item in ärzteListe.SelectedItems)
             {
                 var arzt = item as Core.Arzt;
-                items.Add(new Core.Besuch(arzt));
+                items.Add(new Core.Besuch(this.tagesplan.Date,arzt));
             }
 
 
@@ -216,8 +216,15 @@ namespace Pharma_Man.Pages
 
 
 
+
         #endregion
 
-
+        private void RouteOptimieren(object sender, RoutedEventArgs e)
+        {
+            if (items.Count > 2)
+            {
+                
+            }
+        }
     }
 }

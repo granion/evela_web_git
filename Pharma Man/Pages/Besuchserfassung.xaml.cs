@@ -75,18 +75,21 @@ namespace Pharma_Man.Pages
         private void BesuchAusgewählt(object sender, RoutedEventArgs e)
         {
             ListBoxItem item = sender as ListBoxItem;
+            Core.Besuch besuch = (Core.Besuch)item.DataContext;
+
+
             
 
-            Core.Besuch besuch = (Core.Besuch)item.DataContext;
+
+            Besuch_erfassen berf = new Besuch_erfassen(besuch);
+            this.NavigationService.Navigate(berf);
         }
 
 
 
         private void NeuerBesuch(object sender, RoutedEventArgs e)
         {
-
             Core.Besuch besuch = new Core.Besuch(selectedDate);
-
             Besuch_erfassen berf = new Besuch_erfassen(besuch);
             this.NavigationService.Navigate(berf);
         }

@@ -139,6 +139,7 @@
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="40"/>
                                             <ColumnDefinition Width="40"/>
+                                            <ColumnDefinition Width="40"/>
                                         </Grid.ColumnDefinitions>
 
                                         <TextBlock Grid.Column="0" Text="{Binding Arzt.Name}" FontSize="20" VerticalAlignment="Center" Margin="5,0,0,0" />
@@ -188,7 +189,7 @@
                     </Grid>
 
                     <Label x:Name="label1" Content="Fahrtdistanz: 30km" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Foreground="White" Margin="0,0,0,24"/>
-                    <Button x:Name="btn_ProcessRoute" Content="Route optimieren" Margin="0,0,28,10" HorizontalAlignment="Right"  VerticalAlignment="Bottom"/>
+                    <Button x:Name="btn_ProcessRoute" Content="Route optimieren" Margin="0,0,28,10" HorizontalAlignment="Right"  VerticalAlignment="Bottom" Click="RouteOptimieren"/>
                     <Label x:Name="label1_Copy" Content="Geschätzte Dauer: 1Std. 43Min." HorizontalAlignment="Left"  VerticalAlignment="Bottom" Foreground="White" Margin="0,0,0,7"/>
                 </Grid>
 
