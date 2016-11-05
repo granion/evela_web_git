@@ -22,7 +22,7 @@
         <Label Grid.Row="0" x:Name="page_caption" Content="Besuchsplanung" Margin="10,0,0,0" Style="{StaticResource Label_PageCaption}"/>
         
         <Viewbox Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
-            <Calendar x:Name="calendar" SelectedDatesChanged="calendar_SelectedDatesChanged" BorderBrush="{x:Null}" Background="#FF75C335" Foreground="White"/>
+            <Calendar x:Name="calendar" BorderBrush="{x:Null}" Background="#FF75C335" Foreground="White" PreviewMouseLeftButtonUp="calendar_PreviewMouseLeftButtonUp"/>
         </Viewbox>
 
     </Grid>

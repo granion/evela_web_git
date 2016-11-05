@@ -29,20 +29,49 @@ namespace Pharma_Man.Pages
 
         private void calendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
-            // ... Get reference.
+            /*
             var calendar = sender as Calendar;
-
-            // ... See if a date is selected.
             if (calendar.SelectedDate.HasValue)
             {
-                // ... Display SelectedDate in Title.
                 DateTime date = calendar.SelectedDate.Value;
 
-                Tagesplan tp = new Tagesplan(date);
+                // Rufe Tagesplan von Datenbank
+                Core.Tagesplan tagesplan = Data.Datenbank.Instance.GetTagesplan(date);
+
+                // Tagesplan empfangen?
+                if (tagesplan == null) tagesplan = new Core.Tagesplan(date);
+
+                Tagesplanung tp = new Tagesplanung(tagesplan);
                 this.NavigationService.Navigate(tp);
             }
-
+            */
             
         }
+
+        private void calendar_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+            if (!(e.OriginalSource is FrameworkElement &&
+            (e.OriginalSource as FrameworkElement).DataContext is DateTime))
+            {
+                base.OnPreviewMouseLeftButtonDown(e);
+                return;
+            }
+
+
+            DateTime date = (DateTime)(e.OriginalSource as FrameworkElement).DataContext;
+
+            // Rufe Tagesplan von Datenbank
+            Core.Tagesplan tagesplan = Data.Datenbank.Instance.GetTagesplan(date);
+
+            // Tagesplan empfangen?
+            if (tagesplan == null) tagesplan = new Core.Tagesplan(date);
+
+            Tagesplanung tp = new Tagesplanung(tagesplan);
+            this.NavigationService.Navigate(tp);
+
+        }
+
+        
     }
 }

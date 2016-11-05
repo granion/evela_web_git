@@ -24,17 +24,17 @@
 
             <StackPanel x:Name="sp_Zeit" Margin="0,45,0,0" Orientation="Vertical" VerticalAlignment="Top">
                 <Label x:Name="lbl_Zeit" Content="Datum &amp; Zeit" Style="{StaticResource Label_Name}" />
-                <DockPanel HorizontalAlignment="Stretch">
-                    <TextBox x:Name="tb_Zeit" TextWrapping="Wrap" Text="Datum" Width="100" HorizontalAlignment="Left" GotFocus="tb_GotFocus" />
-                    <TextBox x:Name="tb_Von" TextWrapping="Wrap" Text="Von" Width="50" HorizontalAlignment="Left" Margin="5,0,0,0" GotFocus="tb_Von_GotFocus"/>
-                    <TextBox x:Name="tb_Bis" TextWrapping="Wrap" Text="Bis" Width="50" HorizontalAlignment="Left" Margin="5,0,0,0" GotFocus="tb_Bis_GotFocus"/>
-                </DockPanel>
+                <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
+                    <TextBox x:Name="tb_Zeit" TextWrapping="Wrap" Text="Datum"  HorizontalAlignment="Left"/>
+                    <TextBox x:Name="tb_Von" TextWrapping="Wrap" Text="Von"  HorizontalAlignment="Left" Margin="5,0,0,0"/>
+                    <TextBox x:Name="tb_Bis" TextWrapping="Wrap" Text="Bis"  HorizontalAlignment="Left" Margin="5,0,0,0"/>
+                </StackPanel>
                 
             </StackPanel>
 
             <StackPanel x:Name="sp_Thema" Margin="0,95,0,0" Orientation="Vertical" VerticalAlignment="Top">
                 <Label x:Name="lbl_Thema" Content="Thema" Style="{StaticResource Label_Name}" />
-                <TextBox x:Name="tb_Thema" TextWrapping="Wrap" Text="TextBox" GotFocus="tb_Thema_GotFocus"/>
+                <TextBox x:Name="tb_Thema" TextWrapping="Wrap" Text="TextBox" />
             </StackPanel>
 
             <StackPanel x:Name="sp_SonderbesuchNotiz" Margin="0,155,0,0" Orientation="Vertical" VerticalAlignment="Top">
@@ -49,7 +49,7 @@
 
             <StackPanel x:Name="sp_Notizen" Margin="0,355,0,0" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Stretch">
                 <Label x:Name="lbl_Notizen" Content="Notiz" Style="{StaticResource Label_Name}"/>
-                <RichTextBox x:Name="rtb_Notizen" Height="100" Margin="0,0,418,0" >
+                <RichTextBox x:Name="rtb_Notizen" Height="100" >
                     <FlowDocument>
                         <Paragraph>
                             <Run Text="Notizen"/>
@@ -57,12 +57,9 @@
                     </FlowDocument>
                 </RichTextBox>
             </StackPanel>
-            <Button x:Name="btn_Speichern" Content="Beusch speichern" HorizontalAlignment="Left" Margin="0,516,0,0" VerticalAlignment="Top" Width="106" Click="btn_Speichern_Click"/>
-            <StackPanel>
-                <WebBrowser x:Name="pdf_web" Visibility="Hidden" Uid="" Source="C:\Users\Vladi\Source\Repos\evela_web_git3\Pharma Man\bin\Debug\pharmaMan.pdf"></WebBrowser>
-                <InkCanvas x:Name="ink" Visibility="Hidden"/>
-                <Button x:Name="btn_BesuchAbschließen" Visibility="Hidden" Content="Beusch abschließen"  Width="106" Click="btn_BesuchAbschließen_Click"/>
-            </StackPanel>
+            <Button x:Name="btn_Speichern" Content="Beusch speichern" HorizontalAlignment="Left" Margin="0,516,0,0" VerticalAlignment="Top" Width="106"/>
+            <Button x:Name="btn_BesuchAbschließen" Content="Beusch abschließen" HorizontalAlignment="Left" Margin="124,516,0,0" VerticalAlignment="Top" Width="106"/>
+
         </Grid>
     </Grid>
 </Page>

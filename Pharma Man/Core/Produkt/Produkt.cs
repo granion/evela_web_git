@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Pharma_Man {
+    [Serializable]
     public class Produkt {
 
         private int id;

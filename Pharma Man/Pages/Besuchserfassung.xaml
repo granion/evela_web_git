@@ -6,8 +6,126 @@
       xmlns:local="clr-namespace:Pharma_Man.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="844"
-      Title="BesuchsplanErfassen" Background="#FF00AEFF">
+      Title="BesuchsplanErfassen">
 
-    <Grid x:Name="grid">
+    <Page.Resources>
+        <ResourceDictionary Source="../Resources.xaml" />
+    </Page.Resources>
+
+    <Grid x:Name="Grid_Page">
+
+        <Grid x:Name="Grid_Modal" Panel.ZIndex="2" Visibility="Visible">
+            <Grid Panel.ZIndex="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto" MaxHeight="600"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="450" />
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.ColumnSpan="3" Grid.RowSpan="3" Panel.ZIndex="3" Click="HideModal">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Rectangle  Fill="Black" Stroke="{x:Null}" StrokeThickness="0" Opacity="0.85" />
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+
+
+                <Grid Grid.Column="1" Grid.Row="1" Panel.ZIndex="3">
+                    <Border Margin="5"
+                            BorderThickness="1" BorderBrush="Gray">
+                        <Border.Effect>
+                            <DropShadowEffect 
+                                ShadowDepth="0"
+                                Opacity="1"
+                                BlurRadius="30" 
+                                Direction="0" 
+                                Color="White" 
+                                RenderingBias="Quality"/>
+                        </Border.Effect>
+                    </Border>
+                    <Grid x:Name="Grid_ModalContent" Background="#F22E2E2E" Margin="6">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="50"/>
+                        </Grid.RowDefinitions>
+
+                        
+
+
+                        <Grid x:Name="Grid_Modal_TopRow" Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="50"/>
+                            </Grid.ColumnDefinitions>
+
+
+                            <Label Grid.Column="0" Content="Tagesplan" Foreground="White" FontSize="20" Margin="0,0,-2,0" />
+                            <Label Grid.Column="1" x:Name="Grid_Modal_TopRow_lbl_Date" Content="für den 22.22.2222" Foreground="#FF8F8F8F" FontSize="14" Margin="-2,7,0,0"/>
+
+                            
+                        </Grid>
+
+                        <Grid Grid.Row="1">
+                            <ListBox x:Name="besuchList"                                  
+                                 Style="{StaticResource ListBoxBesuche}" Foreground="LightGray"
+                                         ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                     ScrollViewer.CanContentScroll="False"
+                                    >
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Background="#FF323232" Height="40">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="40"/>
+                                                <ColumnDefinition Width="40"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock Grid.Column="0" Text="{Binding Arzt.Name}" FontSize="20" VerticalAlignment="Center" Margin="5,0,0,0" />
+
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                                <ListBox.ItemContainerStyle>
+                                    <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                                        <EventSetter Event="MouseDoubleClick" Handler="BesuchAusgewählt"/>
+                                    </Style>
+                                </ListBox.ItemContainerStyle>
+                            </ListBox>
+                        </Grid>
+
+                        <Grid Grid.Row="2">
+                            <Button Grid.Column="2" HorizontalAlignment="Stretch" Click="NeuerBesuch">+</Button>
+                        </Grid>
+                        
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <Grid x:Name="Page_Content" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" x:Name="page_caption" Content="Besuchserfassung" Margin="10,0,0,0" Style="{StaticResource Label_PageCaption}"/>
+
+            <Viewbox Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                <Calendar x:Name="calendar" BorderBrush="{x:Null}" Background="#FF75C335" Foreground="White" PreviewMouseLeftButtonUp="calendar_PreviewMouseLeftButtonUp" />
+            </Viewbox>
+         
+        </Grid>
     </Grid>
 </Page>

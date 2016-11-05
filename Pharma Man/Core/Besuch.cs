@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Pharma_Man.Core
 {
+    [Serializable]
     public class Besuch
     {
-
         private int id;
         public int ID { get { return id; } }
 
@@ -28,9 +28,24 @@ namespace Pharma_Man.Core
         private Arzt arzt;
         public Arzt Arzt { get { return arzt; } }
 
-        public Besuch(int id,/* DateTime start, DateTime ende, Produkt[] produkte,*/        Arzt arzt)
+        #region Für Besuchserfassung
+
+        //Flag für Besuchserfassung
+        private bool isErfasst = false;
+
+        #endregion
+
+        #region Für Tagesplanung
+
+        //Flag für Tagesplanung
+        public bool isLocked = false;
+        public TimeSpan geschätzteDauer;
+
+        #endregion
+
+        public Besuch(/* DateTime start, DateTime ende, Produkt[] produkte,*/        Arzt arzt)
         {
-            this.id = id;
+            //this.id = id;
             /*
             this.terminStart = start;
             this.terminEnde = ende;
@@ -41,15 +56,9 @@ namespace Pharma_Man.Core
             this.arzt = arzt;
         }
 
-        //Vladi Konstrk für PDF
-
-        public Besuch(int id, DateTime datum, DateTime start, DateTime ende, Produkt[] produkte)
+        public Besuch(DateTime datum)
         {
-            this.id = id;
             this.datum = datum;
-            this.terminStart = start;
-            this.terminEnde = ende;
-            this.produkte = produkte;
         }
 
         public int calculateDuration(DateTime anfang, DateTime ende)
@@ -57,6 +66,17 @@ namespace Pharma_Man.Core
             TimeSpan duration = ende.Subtract(anfang);
 
             return duration.Minutes;
+        }
+
+        public void UpdateProdukte(Produkt[] produkte)
+        {
+            this.produkte = produkte;
+        }
+
+        public void UpdateTermin(DateTime start, DateTime ende)
+        {
+            this.terminStart = start;
+            this.terminEnde = ende;
         }
     }
 }

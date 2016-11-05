@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Pharma_Man.Core
 {
+    [Serializable]
     public class Adresse
     {
         private int plz;
@@ -23,13 +24,22 @@ namespace Pharma_Man.Core
         private string zusatz;
         public string Zusatz{get { return zusatz; }}
 
+        private double latitude;
+        public double Latitude { get { return latitude; } }
 
-        public Adresse(int plz, string straße, int hausNr, string ort, string zusatz=null)
+        private double longitude;
+        public double Longitude { get { return longitude; } }
+
+
+        public Adresse(int plz, string straße, int hausNr, string ort, double lat, double lng, string zusatz = null)
         {
             this.plz = plz;
             this.straße = straße;
             this.hausNr = hausNr;
             this.ort = ort;
+            this.latitude = lat;
+            this.longitude = lng;
+
             this.zusatz = zusatz;
         }
     }

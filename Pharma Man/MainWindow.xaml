@@ -69,8 +69,7 @@
                             x:Name="btn_Ärzteliste"
                             Image="UIExplorer_64x.png" 
                             Text="Ärzteliste"                         
-                            Margin="0,0,0,1"
-                            ButtonBase.Click="btn_Ärzteliste_Click"/>
+                            Margin="0,0,0,1"/>
 
                         <Button x:Name="btn_prev" Content="Zurück" HorizontalAlignment="Stretch" VerticalAlignment="Top"  Click="btn_prev_Click" HorizontalContentAlignment="Left" Margin="0,0,0,0"/>
                         <Button x:Name="btn_next" Content="Vor" HorizontalAlignment="Stretch" Margin="125,0,0,0" VerticalAlignment="Top"  Click="btn_next_Click" HorizontalContentAlignment="Left" />

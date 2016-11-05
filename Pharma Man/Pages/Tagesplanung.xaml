@@ -1,19 +1,25 @@
-﻿<Page x:Class="Pharma_Man.Pages.Tagesplan"
+﻿<Page x:Class="Pharma_Man.Pages.Tagesplanung"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:bing="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
       xmlns:local="clr-namespace:Pharma_Man.Pages"
       xmlns:map="clr-namespace:Pharma_Man.controls"
       
       mc:Ignorable="d" 
-      d:DesignHeight="700" d:DesignWidth="844"
+      d:DesignHeight="700" 
+      d:DesignWidth="844"
+      
       Title="Tagesplan">
+
+    <Page.Resources>
+        <ResourceDictionary Source="../Resources.xaml" />
+    </Page.Resources>
 
     <Grid x:Name="Grid_Page">
         <Grid x:Name="Grid_Modal" Panel.ZIndex="2" Visibility="Hidden">
-            <Rectangle Panel.ZIndex="2" Fill="#FFFF2E00" Stroke="Black" StrokeThickness="0" Opacity="0.5" />
-            <Grid x:Name="Grid_ModalContent" Panel.ZIndex="3">
+            <Grid Panel.ZIndex="3">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="4*"/>
@@ -26,9 +32,73 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Rectangle Grid.Column="1" Grid.Row="1" Panel.ZIndex="4" Fill="#FF00FFF3" Opacity="0.5" />
+                <Button Grid.ColumnSpan="3" Grid.RowSpan="3" Panel.ZIndex="3" Click="HideModal">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Rectangle  Fill="Black" Stroke="{x:Null}" StrokeThickness="0" Opacity="0.85" />
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+
+
+                <Grid Grid.Column="1" Grid.Row="1" Panel.ZIndex="3">
+                    <Border Margin="5"
+                            BorderThickness="1" BorderBrush="Gray">
+                        <Border.Effect>
+                            <DropShadowEffect 
+                                ShadowDepth="1"
+                                Opacity="1"
+                                BlurRadius="50" 
+                                Direction="0" 
+                                Color="White"/>
+                        </Border.Effect>
+                    </Border>
+                    <Grid x:Name="Grid_ModalContent" Background="#EF2E2E2E" Margin="6">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="50"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <Label Content="Ärzteliste" Foreground="White" FontSize="18"></Label>
+                            <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Margin="100,0,0,0">Suchen</TextBox>
+                            <Button HorizontalAlignment="Right" Width="50" Click="HideModal">X</Button>
+                        </Grid>
+                        
+
+                        <ListView Grid.Row="1" Name="ärzteListe" Panel.ZIndex="4" Background="{x:Null}" BorderThickness="0" Foreground="White">
+                            <ListView.View>
+                                <GridView AllowsColumnReorder="False">
+                                    <GridViewColumn Width="120" DisplayMemberBinding="{Binding ID}">
+                                        <GridViewColumn.Header>
+                                            <GridViewColumnHeader Tag="ID" Click="ColumnHeader_Click">ID</GridViewColumnHeader>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                    <GridViewColumn Width="200" DisplayMemberBinding="{Binding Name}">
+                                        <GridViewColumn.Header>
+                                            <GridViewColumnHeader Tag="Name" Click="ColumnHeader_Click">Name</GridViewColumnHeader>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                    <GridViewColumn Width="100" DisplayMemberBinding="{Binding Priorität}">
+                                        <GridViewColumn.Header>
+                                            <GridViewColumnHeader Tag="Priorität" Click="ColumnHeader_Click">Priorität</GridViewColumnHeader>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+
+                        <Button Grid.Row="2" Content="Auswählen" HorizontalAlignment="Right" Width="100" Margin="0,10,40,10" Click="AddBesuch"/>
+                        
+                    </Grid>
+                </Grid>
             </Grid>
         </Grid>
+
 
         <Grid x:Name="Grid_Content" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,0,10,10">
             <Grid.RowDefinitions>
@@ -36,8 +106,8 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <Label Grid.Row="0" x:Name="lbl_pageCaption" Content="SEITEN NAME" HorizontalAlignment="Left"  VerticalAlignment="Top" FontSize="48" Foreground="White" />
-            <Label Grid.Row="0" x:Name="lbl_date" Content="DATUM" HorizontalAlignment="Left" Margin="8,60,0,0" VerticalAlignment="Top" FontSize="24" Foreground="White" Grid.RowSpan="2"/>
+            <Label Grid.Row="0" x:Name="lbl_pageCaption" Content="Tagesplan" Margin="10,0,0,0" Style="{StaticResource Label_PageCaption}"/>
+            <Label Grid.Row="0" x:Name="lbl_date" Content="DATUM" Margin="230,20,0,0" FontSize="24" Foreground="#FF979797" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
@@ -48,41 +118,78 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="1">
-                    <Label x:Name="docList_caption" Content="Ärzteliste" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="30" FontSize="18" Foreground="White" Margin="-4,0,4,0"/>
-                    <ListBox x:Name="docList" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="Black" Background="#FFEAEAEA" Margin="0,30,0,50">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <Grid Margin="0,0,0,2" Background="#FF0ACF37" Height="50">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="294"/>
-                                        <ColumnDefinition Width="50"/>
-                                        <ColumnDefinition Width="50"/>
-                                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
 
-                                    <TextBlock Grid.Column="0" Text="{Binding Besuch.Arzt.Name}" FontSize="30" VerticalAlignment="Center" Margin="5,0,0,0" />
-                                    <Button Grid.Column="1" Content="Dauer"/>
-                                    <Button Grid.Column="2" Content="Lock"/>
-                                    
-                                </Grid>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
+                    <Grid Grid.Row="0">
+                        <Label x:Name="docList_caption" Content="Geplante Besuche" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="32" FontSize="18" Foreground="White" Margin="-4,0,0,0"/>
+                    </Grid>
 
+                    <Grid Grid.Row="1">
+                        <ListBox x:Name="docList"                                  
+                                 Style="{StaticResource ListBoxBesuche}" Foreground="LightGray">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Background="#FF323232" Height="40">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="40"/>
+                                            <ColumnDefinition Width="40"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock Grid.Column="0" Text="{Binding Arzt.Name}" FontSize="20" VerticalAlignment="Center" Margin="5,0,0,0" />
+                                        <Button Grid.Column="1" Content="Dauer" Click="GeschätzteDauerÄndern" Margin="0,0,1,0" />
+                                        <Button Grid.Column="2" Content="Lock" Click="LockListItem"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+
+                    <Grid Grid.Row="2" x:Name="Grid_ListControls">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button Grid.Column="0" Content="Up" Click="MoveItemUp"/>
+                        <Button Grid.Column="1" Content="Add" Click="ShowModal"/>
+                        <Button Grid.Column="2" Content="Remove" Click="RemoveBesuch" />
+                        <Button Grid.Column="3" Content="Down" Click="MoveItemDown"/>
+                    </Grid>
+
+                    <Grid Grid.Row="3" x:Name="Grid_Buttons">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button Grid.Column="0" Content="Speichern" Click="TagesplanSpeichern"/>
+                        <Button Grid.Column="1" Content="Abschließen" Click="TagesplanAbschließen"/>
+                    </Grid>
                 </Grid>
 
-                
                 <Grid Grid.Column="3" Name="map_container">
-                    <Label x:Name="map_caption" Content="Karte" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="30" FontSize="18" Foreground="White"/>
+                    <Label Grid.Column="1" x:Name="map_caption" Content="Karte" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="32" FontSize="18" Foreground="White"/>
 
                     <Grid Grid.Column="2" Margin="0,30,0,50">
-                        <map:Map Grid.Column="1" x:Name="MainMap" Zoom="10" MaxZoom="18" MinZoom="3" >
-                            <map:Map.CacheMode>
-                                <BitmapCache/>
-                            </map:Map.CacheMode>
-                        </map:Map>
+                        <bing:Map Name="BingMap"
+                                  Center="49.351491, 9.143293"
+                                  CredentialsProvider="AggNeGV4ySngk7sHLrggyU7kbsyPehieMJrGhZtaJ7Eubm5qe5G8YkRH2bssu6PJ"
+                                  Mode="Road"
+                                  ZoomLevel="15"
+                                  ></bing:Map>
                     </Grid>
 
                     <Label x:Name="label1" Content="Fahrtdistanz: 30km" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Foreground="White" Margin="0,0,0,24"/>
+                    <Button x:Name="btn_ProcessRoute" Content="Route optimieren" Margin="0,0,28,10" HorizontalAlignment="Right"  VerticalAlignment="Bottom"/>
+                    <Label x:Name="label1_Copy" Content="Geschätzte Dauer: 1Std. 43Min." HorizontalAlignment="Left"  VerticalAlignment="Bottom" Foreground="White" Margin="0,0,0,7"/>
                 </Grid>
 
             </Grid>
