@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 
 using System.Collections.ObjectModel;
 
+using System.Device.Location;
+
 using System.IO;
 
 using System.ComponentModel;
@@ -34,6 +36,7 @@ namespace Pharma_Man.Pages
         private List<Core.Arzt> ärzte = Data.Datenbank.Instance.ärzte.Values.ToList();
 
         //Map
+        double geschätzteDistanz=0;
 
 
         public Tagesplanung(Core.Tagesplan tagesplan)
@@ -97,6 +100,7 @@ namespace Pharma_Man.Pages
                 }
             }
             docList.UpdateLayout();
+            GesamtEntfernungAusrechnen();
         }
 
         private void MoveItemDown(object sender, RoutedEventArgs e)
@@ -124,8 +128,8 @@ namespace Pharma_Man.Pages
                 }                            
             }
             docList.UpdateLayout();
+            GesamtEntfernungAusrechnen();
         }
-
 
         private void LockListItem(object sender, RoutedEventArgs e)
         {
@@ -154,9 +158,9 @@ namespace Pharma_Man.Pages
                 items.Add(new Core.Besuch(this.tagesplan.Date,arzt));
             }
 
-
-            docList.UpdateLayout();
+            docList.UpdateLayout();           
             Grid_Modal.Visibility = Visibility.Hidden;
+            GesamtEntfernungAusrechnen();
         }
 
         private void RemoveBesuch(object sender, RoutedEventArgs e)
@@ -215,8 +219,6 @@ namespace Pharma_Man.Pages
         }
 
 
-
-
         #endregion
 
         private void RouteOptimieren(object sender, RoutedEventArgs e)
@@ -224,7 +226,84 @@ namespace Pharma_Man.Pages
             if (items.Count > 2)
             {
                 
+                for(int i = 1; i < items.Count; i++)
+                {
+                    int id = 0;
+                    double distance = 0;
+
+                    // Fahre fort, falls Besuch(i) im Plan gesperrt ist
+                    if (items[i].isLocked) continue;
+
+                    // Berechne Entfernung zum nächsten Besuch(Standort)
+                    for (int j = i+1; j + 1 < items.Count; j++)
+                    {
+                        // Überspringe falls nächster Besuch im Plan gesperrt ist
+                        if (items[j].isLocked) continue;
+
+                        // Berechne Distanz zwischen Besuch(i) und Besuch(j)
+                        GeoCoordinate ort1 = new GeoCoordinate(items[j].Arzt.Adresse.Latitude, items[j].Arzt.Adresse.Longitude);
+                        GeoCoordinate ort2 = new GeoCoordinate(items[i].Arzt.Adresse.Latitude, items[i].Arzt.Adresse.Longitude);
+                        double tmp = ort1.GetDistanceTo(ort2);
+
+                        // Speichere tmp und fahre fort, falls j gleich i
+                        if (j == i + 1)
+                        {
+                            distance = tmp;
+                            continue;
+                        }                      
+
+                        // Speichere tmp und id, falls tmp kleiner distance
+                        if (tmp < distance)
+                        {
+                            distance = tmp;
+                            id = j;
+                        }
+                    }
+
+                    if (id != 0)
+                    {
+                        // Speichere Besuche
+                        var itemToMoveDown = items[i];
+                        var itemToSwap = this.items[id];
+
+                        // Lösche Besuche aus Liste
+                        this.items.Remove(itemToMoveDown);
+                        this.items.Remove(itemToSwap);
+
+                        // Füge Besuche an getauschte Positionen wieder ein
+                        this.items.Insert(i, itemToSwap);
+                        this.items.Insert(id, itemToMoveDown);
+                    }
+                }
+                docList.UpdateLayout();
+
+
+                BingMap.Children.Clear();
+
+                foreach(Core.Besuch besuch in items)
+                {
+                    Pushpin pin = new Pushpin();
+                    pin.Tag = besuch.Arzt.Name;
+                    pin.Location = new Location(besuch.Arzt.Adresse.Latitude,besuch.Arzt.Adresse.Longitude);
+                    BingMap.Children.Add(pin);
+                }
+                GesamtEntfernungAusrechnen();
+            }           
+        }
+
+        private void GesamtEntfernungAusrechnen()
+        {
+            double value=0;
+
+            for(int i = 0; i + 1 < items.Count; i++)
+            {
+                GeoCoordinate ort1 = new GeoCoordinate(items[i].Arzt.Adresse.Latitude, items[i].Arzt.Adresse.Longitude);
+                GeoCoordinate ort2 = new GeoCoordinate(items[i + 1].Arzt.Adresse.Latitude, items[i + 1].Arzt.Adresse.Longitude);
+
+                value += ort1.GetDistanceTo(ort2);
             }
+
+            lbl_map_distance.Content = "Gesamtstrecke:" + (Convert.ToInt32(value)).ToString() + "m.";
         }
     }
 }

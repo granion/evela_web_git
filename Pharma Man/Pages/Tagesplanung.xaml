@@ -5,7 +5,6 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:bing="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
       xmlns:local="clr-namespace:Pharma_Man.Pages"
-      xmlns:map="clr-namespace:Pharma_Man.controls"
       
       mc:Ignorable="d" 
       d:DesignHeight="700" 
@@ -54,7 +53,7 @@
                                 Color="White"/>
                         </Border.Effect>
                     </Border>
-                    <Grid x:Name="Grid_ModalContent" Background="#EF2E2E2E" Margin="6">
+                    <Grid x:Name="Grid_ModalContent" Background="#E52E2E2E" Margin="6">
 
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
@@ -69,7 +68,7 @@
                         </Grid>
                         
 
-                        <ListView Grid.Row="1" Name="ärzteListe" Panel.ZIndex="4" Background="{x:Null}" BorderThickness="0" Foreground="White">
+                        <ListView Grid.Row="1" Name="ärzteListe" Panel.ZIndex="4" Background="#FF252525" BorderThickness="0" Foreground="White">
                             <ListView.View>
                                 <GridView AllowsColumnReorder="False">
                                     <GridViewColumn Width="120" DisplayMemberBinding="{Binding ID}">
@@ -159,10 +158,10 @@
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Button Grid.Column="0" Content="Up" Click="MoveItemUp"/>
+                        <Button Grid.Column="0" Name="btn_up" Content="Up" Click="MoveItemUp"/>
                         <Button Grid.Column="1" Content="Add" Click="ShowModal"/>
                         <Button Grid.Column="2" Content="Remove" Click="RemoveBesuch" />
-                        <Button Grid.Column="3" Content="Down" Click="MoveItemDown"/>
+                        <Button Grid.Column="3" Name="btn_down" Content="Down" Click="MoveItemDown"/>
                     </Grid>
 
                     <Grid Grid.Row="3" x:Name="Grid_Buttons">
@@ -188,7 +187,7 @@
                                   ></bing:Map>
                     </Grid>
 
-                    <Label x:Name="label1" Content="Fahrtdistanz: 30km" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Foreground="White" Margin="0,0,0,24"/>
+                    <Label x:Name="lbl_map_distance" Content="Fahrtdistanz: 30km" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Foreground="White" Margin="0,0,0,24"/>
                     <Button x:Name="btn_ProcessRoute" Content="Route optimieren" Margin="0,0,28,10" HorizontalAlignment="Right"  VerticalAlignment="Bottom" Click="RouteOptimieren"/>
                     <Label x:Name="label1_Copy" Content="Geschätzte Dauer: 1Std. 43Min." HorizontalAlignment="Left"  VerticalAlignment="Bottom" Foreground="White" Margin="0,0,0,7"/>
                 </Grid>
