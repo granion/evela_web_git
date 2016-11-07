@@ -31,12 +31,15 @@ using Pharma_Man.controls;
 using System.Diagnostics;
 using Pharma_Man.Core;
 using Pharma_Man.Pages;
+using System.Windows.Ink;
 
 namespace Pharma_Man.Pages
 {
     public partial class Beleg : Page
     {
         Core.Besuch besuch;
+
+        string tmpPdfPath = AppDomain.CurrentDomain.BaseDirectory + @"Belege/" + "unsigned.pdf";
 
         public Beleg(Core.Besuch besuch)
         {
@@ -57,12 +60,19 @@ namespace Pharma_Man.Pages
             PDFCreator.DrawThema(page, gfx, besuch.Thema);
             PDFCreator.DrawArzt(page, gfx, besuch.Arzt);
 
+
+            if (File.Exists(tmpPdfPath)) File.Delete(tmpPdfPath);
+
             // SPEICHERN DER PDF
             // GEGEBENENFALLS EIN BESSERER FILENAME?
-            document.Save(AppDomain.CurrentDomain.BaseDirectory + @"Belege/" + "unsigned.pdf");
+            document.Save(tmpPdfPath);
+            document.Close();
+            page.Close();
+            gfx.Dispose();
 
             // ANZEIGEN DER ERSTELLTEN PDF 
-            pdf_web.Source = new Uri(@AppDomain.CurrentDomain.BaseDirectory + @"Belege/" + "unsigned.pdf");
+            pdf_web.Source = new Uri(tmpPdfPath);
+            
 
 
         }
@@ -88,6 +98,16 @@ namespace Pharma_Man.Pages
 
                 // Das soll der Name der PDF sein
                 string pdfFileName = savePath + belegID.ToString() + ".pdf";
+
+                // Untetschriftsfeld färben
+                ink.Background = new SolidColorBrush(Colors.White);
+                
+                foreach (Stroke s in ink.Strokes)
+                {
+                    s.DrawingAttributes.Color = Colors.Black;
+                }
+
+                ink.UpdateLayout();
 
 
                 RenderTargetBitmap rtb = new RenderTargetBitmap((int)bounds.Width, (int)bounds.Height, dpi, dpi, System.Windows.Media.PixelFormats.Default);
@@ -120,7 +140,33 @@ namespace Pharma_Man.Pages
                     PDFCreator.DrawSignature(gfx, 2);
 
                     // HIER SOLL DIE PDF MIT UNTERSCHRIFT AM ORT "pdfFileName" gespeichert werden! <<<<<<<<<<<<
+                    if (File.Exists(pdfFileName)) File.Delete(pdfFileName);
                     document.Save(pdfFileName);
+
+                    // Setze Status auf erfasst
+                    this.besuch.isErfasst = true;
+
+                    // Speichere Besuch/Tagesplan
+                    var tagesplan = Data.Datenbank.Instance.GetTagesplan(this.besuch.Datum);
+                    tagesplan.UpdateBesuch(this.besuch.ID, this.besuch);
+                    Data.Datenbank.Instance.SaveTagesplan(tagesplan);
+
+                    pdf_web.Navigate(new Uri("about:blank"));
+
+
+
+                    // Untetschriftsfeld färben
+                    ink.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#F2171717"));
+
+                    foreach (Stroke s in ink.Strokes)
+                    {
+                        s.DrawingAttributes.Color = Colors.White;
+                    }
+
+                    ink.UpdateLayout();
+
+
+
 
                     MessageBox.Show("Die PDF wurde erfolgreich gespeichert", "Erfolg", MessageBoxButton.OK, MessageBoxImage.Information);
 
@@ -129,13 +175,7 @@ namespace Pharma_Man.Pages
                 }
 
                
-                // Setze Status auf erfasst
-                this.besuch.isErfasst = true;
-
-                // Speichere Besuch/Tagesplan
-                var tagesplan = Data.Datenbank.Instance.GetTagesplan(this.besuch.Datum);
-                tagesplan.UpdateBesuch(this.besuch.ID, this.besuch);
-                Data.Datenbank.Instance.SaveTagesplan(tagesplan);
+                
             }
         }
     }

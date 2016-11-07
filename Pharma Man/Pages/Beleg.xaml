@@ -42,8 +42,7 @@
                     </Grid>
 
                 <!--Unterschrift-->
-                <Grid Grid.Row="1">
-                        
+                    <Grid Grid.Row="1">
                         <Label Content="UNTERSCHRIFT" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="72"/>
                         <InkCanvas x:Name="ink" Background="#F2171717">
                             <InkCanvas.DefaultDrawingAttributes >

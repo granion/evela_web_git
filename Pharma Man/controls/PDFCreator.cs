@@ -6,6 +6,7 @@ using Pharma_Man.Core;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,8 +18,7 @@ namespace Pharma_Man.controls
 
         public static void DrawLogo(XGraphics gfx, int number)
         {
-
-            XImage image = XImage.FromFile(@"C:\Users\Vladi\Source\Repos\evela_web_git5\Pharma Man\Ressources\logo placeholder.png");
+            XImage image = XImage.FromFile(@"Ressources\logo placeholder.png");
 
             double width = 100;
             double height = 100;
@@ -142,6 +142,8 @@ namespace Pharma_Man.controls
 
             gfx.DrawString("Unterschrift", font, XBrushes.Red, 50, 440);
             gfx.DrawImage(image, 50, 470, width, height);
+
+            if (File.Exists("signatur.png")) File.Delete("signature.png");
 
         }
 

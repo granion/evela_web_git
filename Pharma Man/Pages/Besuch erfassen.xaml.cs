@@ -38,7 +38,7 @@ namespace Pharma_Man.Pages
             tb_Von.Text = besuch.TerminStart.ToShortTimeString();
             tb_Bis.Text = besuch.TerminEnde.ToShortTimeString();
 
-            tb_Arzt.Text = besuch.Arzt.Name;
+            if(besuch.Arzt != null) tb_Arzt.Text = besuch.Arzt.Name;
 
             tb_Thema.Text = besuch.Thema;
 
@@ -116,7 +116,7 @@ namespace Pharma_Man.Pages
 
 
             // VLADI, bitte in die "Beleg"-Seite auslagern!
-
+            #region old
             /*
 
             //PDF Daten ziehen
@@ -151,6 +151,7 @@ namespace Pharma_Man.Pages
             }
 
             */
+            #endregion
         }
 
         private void BesuchAbschließen(object sender, RoutedEventArgs e)
@@ -165,6 +166,7 @@ namespace Pharma_Man.Pages
 
 
             // VLADI, bitte in die "Beleg"-Seite auslagern!
+            #region old
             /*
 
             // PDF aus Besuch erzeugen
@@ -215,6 +217,7 @@ namespace Pharma_Man.Pages
             }
 
     */
+            #endregion
 
         }
     }

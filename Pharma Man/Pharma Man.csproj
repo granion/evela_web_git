@@ -204,7 +204,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Ressources\logo placeholder.png" />
+    <Resource Include="Ressources\logo placeholder.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Ressources\UIExplorer_64x.png" />

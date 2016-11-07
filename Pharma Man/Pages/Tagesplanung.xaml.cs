@@ -404,6 +404,7 @@ namespace Pharma_Man.Pages
             tb_Time.Text = item.geschätzteDauer.TotalMinutes.ToString();
 
             Grid_Time_Modal.Visibility = Visibility.Visible;
+            tb_Time.Focus();
         }
 
         private void ChangeTime(object sender, RoutedEventArgs e)

@@ -18,7 +18,7 @@
     </Page.Resources>
 
     <Grid x:Name="Grid_Page">
-        <Grid x:Name="Grid_Modal" Panel.ZIndex="2" Visibility="Visible">
+        <Grid x:Name="Grid_Modal" Panel.ZIndex="2" Visibility="Hidden">
             <Grid Panel.ZIndex="3">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
