@@ -18,7 +18,7 @@ namespace Pharma_Man.controls
         public static void DrawLogo(XGraphics gfx, int number)
         {
 
-            XImage image = XImage.FromFile(@"Ressources\logo placeholder.png");
+            XImage image = XImage.FromFile(@"C:\Users\Vladi\Source\Repos\evela_web_git5\Pharma Man\Ressources\logo placeholder.png");
 
             double width = 100;
             double height = 100;
@@ -29,7 +29,7 @@ namespace Pharma_Man.controls
         }
 
 
-        public static void DrawZeit(PdfPage page, XGraphics gfx, string tag, string von, string bis)
+        public static void DrawZeit(PdfPage page, XGraphics gfx, DateTime von, DateTime bis)
         {
 
             XRect rect = new XRect(new XPoint(), gfx.PageSize);
@@ -43,9 +43,9 @@ namespace Pharma_Man.controls
 
 
             gfx.DrawString("Zeiterfassung", font, XBrushes.Red, 50, 200);
-            gfx.DrawString(tag, font2, XBrushes.Black, 50, 230);
-            gfx.DrawString("von " + von, font2, XBrushes.Black, 200, 230);
-            gfx.DrawString(" bis " + bis, font2, XBrushes.Black, 350, 230);
+            gfx.DrawString(von.ToShortDateString(), font2, XBrushes.Black, 50, 230);
+            gfx.DrawString("von " + von.ToShortTimeString(), font2, XBrushes.Black, 200, 230);
+            gfx.DrawString(" bis " + bis.ToShortTimeString(), font2, XBrushes.Black, 350, 230);
         }
 
         public static void DrawThema(PdfPage page, XGraphics gfx, string inhalt)
@@ -129,13 +129,19 @@ namespace Pharma_Man.controls
 
         public static void DrawSignature(XGraphics gfx, int number)
         {
+            XRect rect = new XRect(new XPoint(), gfx.PageSize);
+            rect.Inflate(100, -15);
+
+            //Überschriften Font
+            XFont font = new XFont("Arial", 24, XFontStyle.Bold);
 
             XImage image = XImage.FromFile(@"signatur.png");
 
             double width = 250;
             double height = 100;
 
-            gfx.DrawImage(image, 50, 550, width, height);
+            gfx.DrawString("Unterschrift", font, XBrushes.Red, 50, 440);
+            gfx.DrawImage(image, 50, 470, width, height);
 
         }
 

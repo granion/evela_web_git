@@ -29,21 +29,6 @@ namespace Pharma_Man.Pages
 
         Core.Besuch besuch;
 
-        public bool isPDFcreated = false; //wird benutzt um die PDF im anderen Fenster anzuzeigen 
-
-        //PDF Daten
-        string datum;
-        string von;
-        string bis;
-        string thema;
-        string sonderbesuch;
-        string notiz;
-
-        //PDF-File Name (für Prototypen n statischer name)
-        //Sollte immer im bin/Debug Folder vom Projekt abgelegt werden
-        const string filename = "pharmaMan_beleg.pdf";
-        const string filename_signed = "pharmaMan_beleg_sig.pdf";
-
         public Besuch_erfassen(Core.Besuch besuch)
         {
             InitializeComponent();
