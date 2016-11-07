@@ -139,7 +139,7 @@ namespace Pharma_Man.Pages
                     PDFCreator.DrawArzt(page, gfx, besuch.Arzt);
                     PDFCreator.DrawSignature(gfx, 2);
 
-                    // HIER SOLL DIE PDF MIT UNTERSCHRIFT AM ORT "pdfFileName" gespeichert werden! <<<<<<<<<<<<
+                    // HIER SOLL DIE PDF MIT UNTERSCHRIFT AM ORT "pdfFileName" gespeichert werden! 
                     if (File.Exists(pdfFileName)) File.Delete(pdfFileName);
                     document.Save(pdfFileName);
 
@@ -154,6 +154,14 @@ namespace Pharma_Man.Pages
                     pdf_web.Navigate(new Uri("about:blank"));
 
 
+                    //Gebe Ressourcen frei
+                    page.Close();
+                    document.Close();
+                    document.Dispose();
+                    gfx.Dispose();
+
+                    
+
 
                     // Untetschriftsfeld färben
                     ink.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#F2171717"));
@@ -165,17 +173,12 @@ namespace Pharma_Man.Pages
 
                     ink.UpdateLayout();
 
-
-
-
                     MessageBox.Show("Die PDF wurde erfolgreich gespeichert", "Erfolg", MessageBoxButton.OK, MessageBoxImage.Information);
 
                     // PDF ÖFFNET SICH NACH BUTTON "ABSCHLIEßEN"
                     Process.Start(pdfFileName);
                 }
 
-               
-                
             }
         }
     }

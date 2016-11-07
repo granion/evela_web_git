@@ -143,7 +143,7 @@ namespace Pharma_Man.controls
             gfx.DrawString("Unterschrift", font, XBrushes.Red, 50, 440);
             gfx.DrawImage(image, 50, 470, width, height);
 
-            if (File.Exists("signatur.png")) File.Delete("signature.png");
+            image.Dispose();
 
         }
 
