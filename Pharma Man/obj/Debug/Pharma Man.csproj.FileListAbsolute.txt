@@ -332,3 +332,5 @@ C:\Users\Vladi\Source\Repos\evela_web_git5\Pharma Man\obj\Debug\UserControls\Nav
 C:\Users\Vladi\Source\Repos\evela_web_git5\Pharma Man\obj\Debug\Pharma Man.g.resources
 C:\Users\Vladi\Source\Repos\evela_web_git5\Pharma Man\obj\Debug\Pharma_Man.Properties.Resources.resources
 C:\Users\Vladi\Source\Repos\evela_web_git5\Pharma Man\obj\Debug\Pharma Man.csproj.GenerateResource.Cache
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Pages\Ärzteliste.g.cs
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Pages\Ärzteliste.baml

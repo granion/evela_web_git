@@ -30,6 +30,11 @@ namespace Pharma_Man.Core
             this.priorität = prio;
         }
 
+        public void UpdatePriorität(int prio)
+        {
+            this.priorität = prio;
+        }
+
 
     }
 }

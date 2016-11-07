@@ -99,8 +99,8 @@ namespace Pharma_Man.Data {
         }
 
 
-        public Arzt GetArzt(int id) {
-            return ärzte[id];
+        public void UpdateArztPrio(int arztID,int prio) {
+            ärzte[arztID].UpdatePriorität(prio);
         }
 
         public Gebiet GetGebiet(int id) {

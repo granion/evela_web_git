@@ -72,7 +72,8 @@
                             x:Name="btn_Ärzteliste"
                             Image="Ressources/Ärzteliste.png" 
                             Text="Ärzteliste"                         
-                            Margin="0,0,0,1"/>
+                            Margin="0,0,0,1"
+                            ButtonBase.Click ="btn_Ärzteliste_Click"/>
 
                     </StackPanel>
                 </Grid>

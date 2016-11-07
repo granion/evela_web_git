@@ -99,6 +99,9 @@
     <Compile Include="Core\Referent.cs" />
     <Compile Include="Core\Regionalleiter.cs" />
     <Compile Include="Core\Binary parser.cs" />
+    <Compile Include="Pages\Ärzteliste.xaml.cs">
+      <DependentUpon>Ärzteliste.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Besuch erfassen.xaml.cs">
       <DependentUpon>Besuch erfassen.xaml</DependentUpon>
     </Compile>
@@ -126,6 +129,10 @@
     <Compile Include="UserControls\NavigationButton.xaml.cs">
       <DependentUpon>NavigationButton.xaml</DependentUpon>
     </Compile>
+    <Page Include="Pages\Ärzteliste.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Pages\Besuch erfassen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
