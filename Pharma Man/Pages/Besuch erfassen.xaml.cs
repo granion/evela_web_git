@@ -45,13 +45,13 @@ namespace Pharma_Man.Pages
             tb_Notizen.Text = besuch.Notiz;
         }
 
-        private void BesuchSpeichern()
+        private bool BesuchSpeichern()
         {
             // Status setzen
             this.besuch.isErfasst = false;
 
             // Breche ab, falls eines der Felder fehlerhaft ist
-            if (!CheckFelder()) return;
+            if (!CheckFelder()) return false;
 
             // Speichere Daten in Besuch
             ParseData();
@@ -75,6 +75,8 @@ namespace Pharma_Man.Pages
             // Tagesplan speichern
             Data.Datenbank.Instance.SaveTagesplan(tagesplan);
 
+            return true;
+
         }
 
         // Prüfe Felder
@@ -87,6 +89,12 @@ namespace Pharma_Man.Pages
                 var von = DateTime.Parse(tb_Von.Text);
                 // Bis
                 var bis = DateTime.Parse(tb_Bis.Text);
+
+                foreach(Core.Arzt arzt in Data.Datenbank.Instance.ärzte.Values)
+                {
+                    if (tb_Arzt.Text == arzt.Name) return true;
+                }
+                throw new Exception();
             }
             catch
             {
@@ -104,6 +112,14 @@ namespace Pharma_Man.Pages
             this.besuch.Thema = tb_Thema.Text;
             this.besuch.Notiz = tb_Notizen.Text;
 
+            if(this.besuch.Arzt == null)
+            {
+                foreach (Core.Arzt arzt in Data.Datenbank.Instance.ärzte.Values)
+                {
+                    if (tb_Arzt.Text == arzt.Name) this.besuch.SetArzt(arzt);
+                }
+            }
+
             // Haben keine Produkte :/
             this.besuch.UpdateProdukte(null);
         }
@@ -112,112 +128,19 @@ namespace Pharma_Man.Pages
         {
             // Speichere Besuch
             BesuchSpeichern();
-
-
-
-            // VLADI, bitte in die "Beleg"-Seite auslagern!
-            #region old
-            /*
-
-            //PDF Daten ziehen
-            datum = tb_Zeit.Text;
-            von = tb_Von.Text;
-            bis = tb_Bis.Text;
-            thema = tb_Thema.Text;
-            //sonderbesuch = tb_SonderbesuchNotiz.Text;
-
-            //erste PDF (ohne Unterschrift)
-            PdfDocument document = new PdfDocument();
-
-            PdfPage page = document.AddPage();
-
-            XGraphics gfx = XGraphics.FromPdfPage(page);
-
-            PDFCreator.DrawLogo(gfx, 1);
-            PDFCreator.DrawZeit(page, gfx, datum, von, bis);
-            PDFCreator.DrawThema(page, gfx, thema);
-
-            //Wieso funktoniert new Arzt hier nicht mehr?
-            // PDFCreator.DrawArzt(page, gfx, new Arzt(1, "Dr. Klaus Testdoktor", new Adresse(97882, "Straße Test", 3, "Testhausen", 0.1, 0.1), 1); //Arzt-Testobjekt für die PDF
-            PDFCreator.DrawMuster(page, gfx, new string[3]);
-
-            document.Save(filename);
-            isPDFcreated = true;
-
-            if (isPDFcreated)
-            {
-                convertVisibility();
-                pdf_web.Source = new Uri(@"pharmaMan_beleg.pdf");
-            }
-
-            */
-            #endregion
         }
 
         private void BesuchAbschließen(object sender, RoutedEventArgs e)
         {
             // Speichere Besuch
-            BesuchSpeichern();
-
-            Pages.Beleg beleg = new Beleg(this.besuch);
-
-            NavigationService nav = NavigationService.GetNavigationService(this);
-            nav.Navigate(beleg);
-
-
-            // VLADI, bitte in die "Beleg"-Seite auslagern!
-            #region old
-            /*
-
-            // PDF aus Besuch erzeugen
-            Rect bounds = VisualTreeHelper.GetDescendantBounds(ink);
-            double dpi = 96d;
-            //Checken Ob unterschrieben wurde
-            if (ink.Strokes.Count == 0)
+            if (BesuchSpeichern())
             {
-                MessageBox.Show("Das Unterschriftenfeld ist leer", "Fehler", MessageBoxButton.OK, MessageBoxImage.Warning);
+                //Zeige Beleg an, falls erfolgreich
+                Pages.Beleg beleg = new Beleg(this.besuch);
+
+                NavigationService nav = NavigationService.GetNavigationService(this);
+                nav.Navigate(beleg);
             }
-            //wenn ja, dann:
-            else
-            {
-                RenderTargetBitmap rtb = new RenderTargetBitmap((int)bounds.Width, (int)bounds.Height, dpi, dpi, System.Windows.Media.PixelFormats.Default);
-                DrawingVisual dv = new DrawingVisual();
-                using (DrawingContext dc = dv.RenderOpen())
-                {
-                    VisualBrush vb = new VisualBrush(ink);
-                    dc.DrawRectangle(vb, null, new Rect(new Point(), bounds.Size));
-                }
-                rtb.Render(dv);
-
-                BitmapEncoder pngEncoder = new PngBitmapEncoder();
-                pngEncoder.Frames.Add(BitmapFrame.Create(rtb));
-                using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
-                {
-                    pngEncoder.Save(ms);
-                    System.IO.File.WriteAllBytes("signatur.png", ms.ToArray());
-
-                    //neue PDF
-                    PdfDocument document = new PdfDocument();
-
-                    PdfPage page = document.AddPage();
-
-                    XGraphics gfx = XGraphics.FromPdfPage(page);
-
-                    PDFCreator.DrawLogo(gfx, 1);
-                    PDFCreator.DrawZeit(page, gfx, datum, von, bis);
-                    PDFCreator.DrawThema(page, gfx, thema);
-                    //PDFCreator.DrawArzt(page, gfx, new Arzt(1, "Dr. Klaus Testdoktor", new Adresse(9788, "Straße Test", 3, "Testhausen"), 1)); //Arzt-Testobjekt für die PDF
-                    PDFCreator.DrawMuster(page, gfx, new string[3]);
-                    PDFCreator.DrawSignature(gfx, 2);
-                    document.Save(filename_signed);
-
-                    MessageBox.Show("Die PDF wurde erfolgreich gespeichert", "Erfolg", MessageBoxButton.OK, MessageBoxImage.Information);
-                    Process.Start(filename_signed);
-                }
-            }
-
-    */
-            #endregion
 
         }
     }

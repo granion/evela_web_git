@@ -35,7 +35,6 @@ namespace Pharma_Man.Data {
 
         private Datenbank() {
 
-
             InitGebiete();
             InitÄrzte();
             LoadTagespläne();
@@ -44,7 +43,6 @@ namespace Pharma_Man.Data {
             foreach(Arzt arzt in ärzte.Values) {
                 gebiete[0].AddArzt(arzt);
             }
-
         }
 
         private void InitGebiete() {

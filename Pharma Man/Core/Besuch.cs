@@ -74,5 +74,10 @@ namespace Pharma_Man.Core
         {
             this.id = id;
         }
+
+        public void SetArzt(Core.Arzt arzt)
+        {
+            this.arzt = arzt;
+        }
     }
 }

@@ -21,8 +21,5 @@ namespace Pharma_Man.Core
         {
             this.bereiche = bereiche;
         }
-
-
-
     }
 }

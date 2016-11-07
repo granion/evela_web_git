@@ -12,7 +12,6 @@ namespace Pharma_Man.Core
         Finished
     }
 
-
     [Serializable]
     public class Tagesplan
     {

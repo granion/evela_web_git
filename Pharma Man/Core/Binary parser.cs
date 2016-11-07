@@ -40,17 +40,5 @@ namespace Pharma_Man.Core
             }
             
         }
-
-        public static void SaveBesuch()
-        {
-
-        }
-
-        public static void LoadBeleg()
-        {
-
-        }
-
-
     }
 }

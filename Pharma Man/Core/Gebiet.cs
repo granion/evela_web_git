@@ -27,10 +27,5 @@ namespace Pharma_Man.Core {
         public Dictionary<int,Arzt> GetÄrzte() {
             return ärzte;
         }
-
-
-
-
-
     }
 }

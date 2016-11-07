@@ -12,7 +12,5 @@ namespace Pharma_Man
         public Referent(int id, string vorname, string nachname, Gebiet gebietsID) : base(id, vorname, nachname)
         {
         }
-
-
     }
 }
