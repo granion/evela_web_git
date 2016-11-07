@@ -60,6 +60,7 @@ namespace Pharma_Man.Pages
             view.SortDescriptions.Add(new SortDescription("ID", ListSortDirection.Ascending));
             view.SortDescriptions.Add(new SortDescription("Name", ListSortDirection.Ascending));
             view.SortDescriptions.Add(new SortDescription("Priorität", ListSortDirection.Ascending));
+            view.SortDescriptions.Add(new SortDescription("Ort", ListSortDirection.Ascending));
 
         }
 

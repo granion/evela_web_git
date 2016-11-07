@@ -113,6 +113,11 @@
                                     <GridViewColumnHeader Tag="Priorität" Click="ColumnHeader_Click" >Priorität</GridViewColumnHeader>
                                 </GridViewColumn.Header>
                             </GridViewColumn>
+                            <GridViewColumn Width="100" DisplayMemberBinding="{Binding Adresse.Ort}">
+                                <GridViewColumn.Header>
+                                    <GridViewColumnHeader Tag="Ort" Click="ColumnHeader_Click" >Ort</GridViewColumnHeader>
+                                </GridViewColumn.Header>
+                            </GridViewColumn>
 
                         </GridView>
                     </ListView.View>

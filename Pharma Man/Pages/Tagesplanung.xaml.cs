@@ -91,7 +91,7 @@ namespace Pharma_Man.Pages
         {
             var selectedIndex = this.docList.SelectedIndex;
 
-            if (selectedIndex > 0)
+            if (selectedIndex > 0 && selectedIndex<items.Count)
             {
                 var itemToMoveUp = this.items[selectedIndex];
 
@@ -120,30 +120,33 @@ namespace Pharma_Man.Pages
         private void MoveItemDown(object sender, MouseButtonEventArgs e)
         {
             var selectedIndex = this.docList.SelectedIndex;
-            var itemToMoveDown = this.items[selectedIndex];
-
-            if (selectedIndex + 1 < this.items.Count)
+            if (selectedIndex >= 0)
             {
-                for (int i = 1; selectedIndex + i < this.items.Count; i++)
+                var itemToMoveDown = this.items[selectedIndex];
+
+                if (selectedIndex + 1 < this.items.Count)
                 {
-                    if (!items[selectedIndex + i].isLocked)
+                    for (int i = 1; selectedIndex + i < this.items.Count; i++)
                     {
-                        var itemToSwap = this.items[selectedIndex + i];
+                        if (!items[selectedIndex + i].isLocked)
+                        {
+                            var itemToSwap = this.items[selectedIndex + i];
 
-                        this.items.Remove(itemToMoveDown);
-                        this.items.Remove(itemToSwap);
+                            this.items.Remove(itemToMoveDown);
+                            this.items.Remove(itemToSwap);
 
-                        this.items.Insert(selectedIndex, itemToSwap);
-                        this.items.Insert(selectedIndex + i, itemToMoveDown);
+                            this.items.Insert(selectedIndex, itemToSwap);
+                            this.items.Insert(selectedIndex + i, itemToMoveDown);
 
-                        this.docList.SelectedIndex = selectedIndex + i;
-                        break;
+                            this.docList.SelectedIndex = selectedIndex + i;
+                            break;
+                        }
                     }
                 }
+                UpdateIDs();
+                docList.UpdateLayout();
+                GesamtEntfernungAusrechnen();
             }
-            UpdateIDs();
-            docList.UpdateLayout();
-            GesamtEntfernungAusrechnen();
         }
 
         private void LockListItem(object sender, MouseButtonEventArgs e)

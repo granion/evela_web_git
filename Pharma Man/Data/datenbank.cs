@@ -59,6 +59,10 @@ namespace Pharma_Man.Data {
             ärzte.Add(ärzte.Count, new Arzt(ärzte.Count, "Dr. Brett", new Adresse(74211, "Am Freibad", 8, "Leingarten", 49.145189, 9.234029), 4));
             ärzte.Add(ärzte.Count, new Arzt(ärzte.Count, "Dr. Scharf", new Adresse(74211, "Karlsruher Straße", 9, "Leingarten", 49.151243, 9.211938), 2));
             ärzte.Add(ärzte.Count, new Arzt(ärzte.Count, "Dr. Wizofskie", new Adresse(74211, "Augelbaum Straße", 4, "Leingarten", 49.149298, 9.241282), 1));
+            ärzte.Add(ärzte.Count, new Arzt(ärzte.Count, "Dr. Baum", new Adresse(74074, "Fontanestraße", 4, "Heilbronn", 49.125259, 9.217036), 3));
+            ärzte.Add(ärzte.Count, new Arzt(ärzte.Count, "Dr. Schranz", new Adresse(74074, "Ludwigsburger Straße", 180, "Heilbronn", 49.127839, 9.188646), 2));
+            ärzte.Add(ärzte.Count, new Arzt(ärzte.Count, "Dr. Magie", new Adresse(74074, "Bunsenstraße", 6, "Heilbronn", 49.142437, 9.193859), 4));
+            ärzte.Add(ärzte.Count, new Arzt(ärzte.Count, "Dr. Zahnschmerz", new Adresse(74074, "Saarlandstraße",16, "Heilbronn", 49.152663, 9.196133), 1));
         }
 
         private void LoadTagespläne()
