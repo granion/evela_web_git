@@ -38,6 +38,9 @@ namespace Pharma_Man.Pages
         //Map
         double gesamtDistanz = 0;
 
+        //Time
+        int selectedId = 0;
+
         public Tagesplanung(Core.Tagesplan tagesplan)
         {
 
@@ -67,7 +70,18 @@ namespace Pharma_Man.Pages
             view.SortDescriptions.Add(new SortDescription("Name", ListSortDirection.Ascending));
             view.SortDescriptions.Add(new SortDescription("Priorität", ListSortDirection.Ascending));
 
+            GesamtEntfernungAusrechnen();
+            GeschätzteDauerBerechnen();
+        }
 
+        private void UpdateIDs()
+        {
+            for(int i = 0; i < items.Count; i++)
+            {
+                items[i].UpdateID(i);
+            }
+
+            docList.UpdateLayout();
         }
 
         #region Button-Events
@@ -98,6 +112,7 @@ namespace Pharma_Man.Pages
                     }
                 }
             }
+            UpdateIDs();
             docList.UpdateLayout();
             GesamtEntfernungAusrechnen();
         }
@@ -126,25 +141,17 @@ namespace Pharma_Man.Pages
                     }
                 }
             }
+            UpdateIDs();
             docList.UpdateLayout();
             GesamtEntfernungAusrechnen();
         }
 
-        private void LockListItem(object sender, RoutedEventArgs e)
-        {
-            Button button = sender as Button;
-            Core.Besuch item = button.DataContext as Core.Besuch;
-            item.isLocked = !item.isLocked;
-
-        }
-
-        private void GeschätzteDauerÄndern(object sender, MouseButtonEventArgs e)
+        private void LockListItem(object sender, MouseButtonEventArgs e)
         {
             UserControls.ImageButton button = sender as UserControls.ImageButton;
             Core.Besuch item = button.DataContext as Core.Besuch;
+            item.isLocked = !item.isLocked;
 
-            //Rückgabewert übertragen
-            item.geschätzteDauer = new TimeSpan(0, 30, 0);
         }
 
         private void AddBesuch(object sender, RoutedEventArgs e)
@@ -155,6 +162,7 @@ namespace Pharma_Man.Pages
                 items.Add(new Core.Besuch(this.tagesplan.Date, arzt));
             }
 
+            UpdateIDs();
             docList.UpdateLayout();
             Grid_Modal.Visibility = Visibility.Hidden;
             GesamtEntfernungAusrechnen();
@@ -282,7 +290,7 @@ namespace Pharma_Man.Pages
                     items = tmpList;
                     gesamtDistanz = value;
                 }
-
+                UpdateIDs();
                 docList.UpdateLayout();
                 GesamtEntfernungAusrechnen();
             }
@@ -315,30 +323,52 @@ namespace Pharma_Man.Pages
                 BingMap.Children.Add(pin);
             }
             CenterMap();
+            DrawLine();
+        }
+
+        private void DrawLine()
+        {
+            if (items.Count > 1)
+            {
+                MapPolyline polyline = new MapPolyline();
+                polyline.Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Blue);
+                polyline.StrokeThickness = 5;
+                polyline.Opacity = 0.7;
+                polyline.Locations = new LocationCollection();
+
+                foreach (var besuch in items)
+                {
+                    polyline.Locations.Add(new Location(besuch.Arzt.Adresse.Latitude, besuch.Arzt.Adresse.Longitude));
+                }
+
+                BingMap.Children.Add(polyline);
+            }
         }
 
         private void CenterMap()
         {
-            double minLat = items[0].Arzt.Adresse.Latitude;
-            double minLng = items[0].Arzt.Adresse.Longitude;
-
-            double maxLat = items[0].Arzt.Adresse.Latitude;
-            double maxLng = items[0].Arzt.Adresse.Longitude;
-
-            foreach (Core.Besuch besuch in items)
+            if (items.Count > 2)
             {
-                if (besuch.Arzt.Adresse.Latitude < minLat) minLat = besuch.Arzt.Adresse.Latitude;
-                else if (besuch.Arzt.Adresse.Latitude > maxLat) maxLat = besuch.Arzt.Adresse.Latitude;
+                double minLat = items[0].Arzt.Adresse.Latitude;
+                double minLng = items[0].Arzt.Adresse.Longitude;
 
-                if (besuch.Arzt.Adresse.Longitude < minLng) minLng = besuch.Arzt.Adresse.Longitude;
-                else if (besuch.Arzt.Adresse.Longitude > maxLng) maxLng = besuch.Arzt.Adresse.Longitude;
+                double maxLat = items[0].Arzt.Adresse.Latitude;
+                double maxLng = items[0].Arzt.Adresse.Longitude;
+
+                foreach (Core.Besuch besuch in items)
+                {
+                    if (besuch.Arzt.Adresse.Latitude < minLat) minLat = besuch.Arzt.Adresse.Latitude;
+                    else if (besuch.Arzt.Adresse.Latitude > maxLat) maxLat = besuch.Arzt.Adresse.Latitude;
+
+                    if (besuch.Arzt.Adresse.Longitude < minLng) minLng = besuch.Arzt.Adresse.Longitude;
+                    else if (besuch.Arzt.Adresse.Longitude > maxLng) maxLng = besuch.Arzt.Adresse.Longitude;
+                }
+
+                double centerLat = (minLat + maxLat) / 2;
+                double centerLng = (minLng + maxLng) / 2;
+
+                BingMap.Center = new Location(centerLat, centerLng);
             }
-
-            double centerLat = (minLat + maxLat) / 2;
-            double centerLng = (minLng + maxLng) / 2;
-
-            BingMap.Center = new Location(centerLat, centerLng);
-
 
         }
 
@@ -348,7 +378,65 @@ namespace Pharma_Man.Pages
             Core.Besuch item = button.DataContext as Core.Besuch;
 
             items.Remove(item);
+
+            UpdateIDs();
+            
+
+            GesamtEntfernungAusrechnen();
+            GeschätzteDauerBerechnen();
+
             docList.UpdateLayout();
         }
+
+        #region TimeModal
+
+        private void HideTimeModal(object sender, RoutedEventArgs e)
+        {
+            Grid_Time_Modal.Visibility = Visibility.Hidden;
+        }
+
+        private void OpenTimeModal(object sender, MouseButtonEventArgs e)
+        {
+            UserControls.ImageButton button = sender as UserControls.ImageButton;
+            Core.Besuch item = button.DataContext as Core.Besuch;
+
+            selectedId = item.ID;
+            tb_Time.Text = item.geschätzteDauer.TotalMinutes.ToString();
+
+            Grid_Time_Modal.Visibility = Visibility.Visible;
+        }
+
+        private void ChangeTime(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                items[selectedId].geschätzteDauer = new TimeSpan(0, Convert.ToInt32(tb_Time.Text), 0);
+                GeschätzteDauerBerechnen();
+                Grid_Time_Modal.Visibility = Visibility.Hidden;
+            }
+            catch
+            {
+                MessageBox.Show("Überprüfen Sie die Eingabe. Geben Sie bitte die Dauer in Minuten an.", "Fehlerhafte Eingabe", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }           
+        }
+
+        private void GeschätzteDauerBerechnen()
+        {
+            TimeSpan dauer = new TimeSpan();
+
+            foreach(Core.Besuch besuch in items)
+            {
+                dauer += besuch.geschätzteDauer;
+            }
+
+
+            if(dauer.Hours>=8) MessageBox.Show("Die geschätzte Besuchsdauer überschreitet 8 Studen!", "Zeitsoll erfüllt.", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+            lbl_geschätzteDauer.Content = "Geschätzte Dauer: " + dauer.Hours + "Std. " + dauer.Minutes + "Min.";
+        }
+
+
+
+        #endregion
     }
 }

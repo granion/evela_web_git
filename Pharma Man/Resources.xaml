@@ -99,7 +99,7 @@
                         </Trigger>
                     -->
 
-                    <Grid Background="#FF212121">
+                    <Grid Background="{x:Null}">
                         <ScrollViewer Margin="0" Padding="0"
                                 Focusable="false">
                             <StackPanel Margin="0"

@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("ressources/clock.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("ressources/lock.png")]
 
 

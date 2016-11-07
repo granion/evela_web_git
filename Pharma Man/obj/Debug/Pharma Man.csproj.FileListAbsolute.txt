@@ -224,6 +224,18 @@ C:\Users\Vladi\Source\Repos\evela_web_git4\Pharma Man\obj\Debug\UserControls\Nav
 C:\Users\Vladi\Source\Repos\evela_web_git4\Pharma Man\obj\Debug\Pharma Man.g.resources
 C:\Users\Vladi\Source\Repos\evela_web_git4\Pharma Man\obj\Debug\Pharma_Man.Properties.Resources.resources
 C:\Users\Vladi\Source\Repos\evela_web_git4\Pharma Man\obj\Debug\Pharma Man.csproj.GenerateResource.Cache
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Pages\Besuch erfassen.g.cs
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Pages\Besuchsplanung.g.cs
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Pages\Besuchserfassung.g.cs
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\MainWindow.g.cs
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Pages\Beleg.g.cs
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Pages\Tagesplanung.g.cs
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\UserControls\ImageButton.g.cs
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\UserControls\NavigationButton.g.cs
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\App.g.cs
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Pharma Man_MarkupCompile.cache
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Pharma Man_MarkupCompile.lref
 C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\bin\Debug\Pharma Man.exe.config
 C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\bin\Debug\Pharma Man.exe
 C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\bin\Debug\Pharma Man.pdb
@@ -251,21 +263,11 @@ C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\bin\Debug\ko\System.Wind
 C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\bin\Debug\ru\System.Windows.Interactivity.resources.dll
 C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\bin\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
 C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll
-C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Pages\Besuch erfassen.g.cs
-C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Pages\Besuchsplanung.g.cs
-C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Pages\Besuchserfassung.g.cs
-C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\MainWindow.g.cs
-C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Pages\Tagesplanung.g.cs
-C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\UserControls\ImageButton.g.cs
-C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\UserControls\NavigationButton.g.cs
-C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\App.g.cs
-C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\GeneratedInternalTypeHelper.g.cs
-C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Pharma Man_MarkupCompile.cache
-C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Pharma Man_MarkupCompile.lref
 C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Pages\Besuch erfassen.baml
 C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Pages\Besuchsplanung.baml
 C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Pages\Besuchserfassung.baml
 C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\MainWindow.baml
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Pages\Beleg.baml
 C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Pages\Tagesplanung.baml
 C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\Resources.baml
 C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Debug\UserControls\ImageButton.baml

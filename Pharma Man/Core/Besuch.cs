@@ -9,8 +9,8 @@ namespace Pharma_Man.Core
     [Serializable]
     public class Besuch
     {
-        private int? id;
-        public int? ID { get { return id; } }
+        private int id;
+        public int ID { get { return id; } }
 
         private DateTime datum;
         public DateTime Datum { get { return datum; } }
@@ -27,6 +27,10 @@ namespace Pharma_Man.Core
         private Arzt arzt;
         public Arzt Arzt { get { return arzt; } }
 
+        // Beleg
+        public string Thema;
+        public string Notiz;
+
         #region Für Besuchserfassung
 
         //Flag für Besuchserfassung
@@ -42,7 +46,7 @@ namespace Pharma_Man.Core
 
         #endregion
 
-        public Besuch(DateTime datum,   Arzt arzt=null, int? id=null)
+        public Besuch(DateTime datum, Arzt arzt=null, int? id=null)
         {
             this.datum = datum;
             this.arzt = arzt;

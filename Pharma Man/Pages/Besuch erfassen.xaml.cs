@@ -50,66 +50,96 @@ namespace Pharma_Man.Pages
 
             this.besuch = besuch;
             tb_Zeit.Text = besuch.Datum.ToShortDateString();
+            tb_Von.Text = besuch.TerminStart.ToShortTimeString();
+            tb_Bis.Text = besuch.TerminEnde.ToShortTimeString();
+
+            tb_Arzt.Text = besuch.Arzt.Name;
+
+            tb_Thema.Text = besuch.Thema;
+
+            tb_Notizen.Text = besuch.Notiz;
         }
 
-        //Zum Switchen nach dem Button Besuch Abschließen zur PDF view ansicht (mit unterschrift etc.)
-        public void convertVisibility()
-        {
-            lbl_Zeit.Visibility = Visibility.Hidden;
-            tb_Zeit.Visibility = Visibility.Hidden;
-            tb_Von.Visibility = Visibility.Hidden;
-            tb_Bis.Visibility = Visibility.Hidden;
-
-            lbl_Thema.Visibility = Visibility.Hidden;
-            tb_Thema.Visibility = Visibility.Hidden;
-
-            lbl_SonderbesuchNotiz.Visibility = Visibility.Hidden;
-            tb_SonderbesuchNotiz.Visibility = Visibility.Hidden;
-
-            lbl_Notizen.Visibility = Visibility.Hidden;
-            rtb_Notizen.Visibility = Visibility.Hidden;
-
-            btn_Speichern.Visibility = Visibility.Hidden;
-
-            lbl_Ärztemuster.Visibility = Visibility.Hidden;
-            lb_Ärztemuster.Visibility = Visibility.Hidden;
-
-
-            pdf_web.Visibility = Visibility.Visible;
-            ink.Visibility = Visibility.Visible;
-            btn_BesuchAbschließen.Visibility = Visibility.Visible;
-
-        }
-
-        private void btn_BesuchSpeichern(object sender, RoutedEventArgs e)
+        private void BesuchSpeichern()
         {
             // Status setzen
             this.besuch.isErfasst = false;
 
-            // Felder Prüfen
+            // Breche ab, falls eines der Felder fehlerhaft ist
+            if (!CheckFelder()) return;
 
-
-            // Werte aus Feldern in Besuch speichern
-
+            // Speichere Daten in Besuch
+            ParseData();
 
             // Tagesplan abrufen
             Core.Tagesplan tagesplan = Data.Datenbank.Instance.GetTagesplan(besuch.Datum);
 
             // Wenn kein Tagesplan vorhanden, lege neuen an und füge den Besuch hinzu
-            if (tagesplan == null) tagesplan = new Core.Tagesplan(besuch.Datum);
+            if (tagesplan == null)
+            {
+                tagesplan = new Core.Tagesplan(besuch.Datum);
 
-            // Besuch in Tagesplan speichern
-            tagesplan.AddBesuch(this.besuch);
+                // Besuch in Tagesplan speichern
+                tagesplan.AddBesuch(this.besuch);
+            }
+            else
+            {
+                tagesplan.UpdateBesuch(this.besuch.ID, this.besuch);
+            }
 
             // Tagesplan speichern
             Data.Datenbank.Instance.SaveTagesplan(tagesplan);
+
+        }
+
+        // Prüfe Felder
+        private bool CheckFelder()
+        {
+            try
+            {
+                // Zeit
+                // Von
+                var von = DateTime.Parse(tb_Von.Text);
+                // Bis
+                var bis = DateTime.Parse(tb_Bis.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Bitte Eingaben prüfen!", "Fehlerhafte Eingabe.", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+            return true;
+        }
+
+        // Speichere Daten im Besuch
+        private void ParseData()
+        {
+            this.besuch.UpdateTermin(DateTime.Parse(tb_Von.Text), DateTime.Parse(tb_Bis.Text));
+            
+            this.besuch.Thema = tb_Thema.Text;
+            this.besuch.Notiz = tb_Notizen.Text;
+
+            // Haben keine Produkte :/
+            this.besuch.UpdateProdukte(null);
+        }
+
+        private void btn_BesuchSpeichern(object sender, RoutedEventArgs e)
+        {
+            // Speichere Besuch
+            BesuchSpeichern();
+
+
+
+            // VLADI, bitte in die "Beleg"-Seite auslagern!
+
+            /*
 
             //PDF Daten ziehen
             datum = tb_Zeit.Text;
             von = tb_Von.Text;
             bis = tb_Bis.Text;
             thema = tb_Thema.Text;
-            sonderbesuch = tb_SonderbesuchNotiz.Text;
+            //sonderbesuch = tb_SonderbesuchNotiz.Text;
 
             //erste PDF (ohne Unterschrift)
             PdfDocument document = new PdfDocument();
@@ -132,19 +162,25 @@ namespace Pharma_Man.Pages
             if (isPDFcreated)
             {
                 convertVisibility();
-                pdf_web.Source = new Uri(@"C:\Users\Vladi\Source\Repos\evela_web_git4\Pharma Man\bin\Debug\pharmaMan_beleg.pdf");
+                pdf_web.Source = new Uri(@"pharmaMan_beleg.pdf");
             }
+
+            */
         }
 
         private void BesuchAbschließen(object sender, RoutedEventArgs e)
         {
-            // Status setzen
-            this.besuch.isErfasst = false;
+            // Speichere Besuch
+            BesuchSpeichern();
 
-            // Felder Prüfen
+            Pages.Beleg beleg = new Beleg(this.besuch);
+
+            NavigationService nav = NavigationService.GetNavigationService(this);
+            nav.Navigate(beleg);
 
 
-            // Werte aus Feldern in Besuch speichern
+            // VLADI, bitte in die "Beleg"-Seite auslagern!
+            /*
 
             // PDF aus Besuch erzeugen
             Rect bounds = VisualTreeHelper.GetDescendantBounds(ink);
@@ -193,7 +229,7 @@ namespace Pharma_Man.Pages
                 }
             }
 
-
+    */
 
         }
     }

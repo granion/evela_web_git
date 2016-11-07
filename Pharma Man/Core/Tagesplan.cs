@@ -48,6 +48,13 @@ namespace Pharma_Man.Core
         public void UpdateBesuch(int i,Core.Besuch besuch)
         {
             //TODO
+            if (i > 0 && i < this.besuche.Count)
+            {
+                if (this.besuche[i].ID == besuch.ID)
+                {
+                    this.besuche[i] = besuch;
+                }
+            }
         }
 
     }

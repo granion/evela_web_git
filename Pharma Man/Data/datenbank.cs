@@ -71,6 +71,18 @@ namespace Pharma_Man.Data {
                     if (tagesplan != null) tagespläne.Add(tagesplan.Date, tagesplan);
                 }
             }
+            else Directory.CreateDirectory("./Tagespläne");
+        }
+
+        public int GetBelegID()
+        {
+            if (Directory.Exists("./Belege"))
+            {
+                var number =  Directory.GetFiles("./Belege", "*.pdf").Count();
+                return number;
+            }
+            else Directory.CreateDirectory("./Belege");
+            return 0;
         }
 
         public void SaveTagesplan(Core.Tagesplan tagesplan)

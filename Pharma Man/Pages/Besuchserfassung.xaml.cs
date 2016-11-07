@@ -77,7 +77,7 @@ namespace Pharma_Man.Pages
             this.NavigationService.Navigate(berf);
         }
 
-        private void NeuerBesuch(object sender, RoutedEventArgs e)
+        private void NeuerBesuch(object sender, MouseButtonEventArgs e)
         {
             Core.Besuch besuch = new Core.Besuch(selectedDate);
             Besuch_erfassen berf = new Besuch_erfassen(besuch);

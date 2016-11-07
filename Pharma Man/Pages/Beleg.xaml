@@ -1,0 +1,65 @@
+﻿<Page x:Class="Pharma_Man.Pages.Beleg"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:bing="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
+      xmlns:UserControls ="clr-namespace:Pharma_Man.UserControls"
+      xmlns:local="clr-namespace:Pharma_Man.Pages"
+      
+      mc:Ignorable="d" 
+      d:DesignHeight="700" 
+      d:DesignWidth="844"
+      
+      Title="Tagesplan">
+
+    <Page.Resources>
+        <ResourceDictionary Source="../Resources.xaml" />
+    </Page.Resources>
+
+    <Grid x:Name="Grid_Page">
+
+        <Grid x:Name="Grid_Content" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,0,10,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" x:Name="lbl_pageCaption" Content="Beleg" Margin="10,0,0,0" Style="{StaticResource Label_PageCaption}"/>
+
+            <Grid Grid.Row="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" /> <!--PDF-->
+                        <RowDefinition Height="200" /> <!--Unterschrift-->
+                        <RowDefinition Height="100" /> <!--Bestätigen-->
+                    </Grid.RowDefinitions>
+                
+
+                <!--PDF-->
+                <Grid Grid.Row="0">
+                        <WebBrowser x:Name="pdf_web" Uid="" />
+                    </Grid>
+
+                <!--Unterschrift-->
+                <Grid Grid.Row="1">
+                        
+                        <Label Content="UNTERSCHRIFT" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="72"/>
+                        <InkCanvas x:Name="ink" Background="#F2171717">
+                            <InkCanvas.DefaultDrawingAttributes >
+                                <DrawingAttributes Color = "White" Width = "2" />
+                            </InkCanvas.DefaultDrawingAttributes>
+                        </InkCanvas>
+                    </Grid>
+
+                <!--Bestätigen-->
+                <Grid Grid.Row="2">
+                        <Button Content="Bestätigen" Style="{StaticResource FlatButton}" FontSize="24" Click="BelegBestätigen"/>
+                </Grid>
+
+                </Grid>
+            </Grid>
+
+        </Grid>
+    </Grid>
+</Page>

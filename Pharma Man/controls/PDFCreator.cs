@@ -18,7 +18,7 @@ namespace Pharma_Man.controls
         public static void DrawLogo(XGraphics gfx, int number)
         {
 
-            XImage image = XImage.FromFile("C:/Users/Vladi/Source/Repos/evela_web_git4/Pharma Man/logo placeholder.png");
+            XImage image = XImage.FromFile(@"Ressources\logo placeholder.png");
 
             double width = 100;
             double height = 100;
@@ -130,7 +130,7 @@ namespace Pharma_Man.controls
         public static void DrawSignature(XGraphics gfx, int number)
         {
 
-            XImage image = XImage.FromFile(@"C:\Users\Vladi\Source\Repos\evela_web_git3\Pharma Man\bin\Debug\signatur.png");
+            XImage image = XImage.FromFile(@"signatur.png");
 
             double width = 250;
             double height = 100;
