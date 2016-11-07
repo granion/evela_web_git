@@ -117,6 +117,9 @@
       <DependentUpon>Tagesplanung.xaml</DependentUpon>
     </Compile>
     <Compile Include="SortAdorner.cs" />
+    <Compile Include="UserControls\ImageButton.xaml.cs">
+      <DependentUpon>ImageButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\NavigationButton.xaml.cs">
       <DependentUpon>NavigationButton.xaml</DependentUpon>
     </Compile>
@@ -155,6 +158,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\ImageButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\NavigationButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -190,10 +197,28 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="logo placeholder.png" />
+    <Resource Include="Ressources\logo placeholder.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="UIExplorer_64x.png" />
+    <Resource Include="Ressources\UIExplorer_64x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ressources\Cancel_256x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ressources\add.png" />
+    <Resource Include="Ressources\arrowDown.png" />
+    <Resource Include="Ressources\arrowUp.png" />
+    <Resource Include="Ressources\remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ressources\Abrechnung.png" />
+    <Resource Include="Ressources\Besuchserfassung.png" />
+    <Resource Include="Ressources\Besuchsplanung.png" />
+    <Resource Include="Ressources\Ärzteliste.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ressources\Clock.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

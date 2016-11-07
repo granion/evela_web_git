@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:bing="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
+      xmlns:UserControls ="clr-namespace:Pharma_Man.UserControls"
       xmlns:local="clr-namespace:Pharma_Man.Pages"
       
       mc:Ignorable="d" 
@@ -62,11 +63,11 @@
                         </Grid.RowDefinitions>
 
                         <Grid Grid.Row="0">
-                            <Label Content="Ärzteliste" Foreground="White" FontSize="18"></Label>
-                            <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Margin="100,0,0,0">Suchen</TextBox>
+                            <Label Content="Ärzteauswahl" Foreground="White" FontSize="18"></Label>
+                            <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Margin="150,0,0,0">Suchen</TextBox>
                             <Button HorizontalAlignment="Right" Width="50" Click="HideModal">X</Button>
                         </Grid>
-                        
+
 
                         <ListView Grid.Row="1" Name="ärzteListe" Panel.ZIndex="4" Background="#FF252525" BorderThickness="0" Foreground="White">
                             <ListView.View>
@@ -92,7 +93,7 @@
                         </ListView>
 
                         <Button Grid.Row="2" Content="Auswählen" HorizontalAlignment="Right" Width="100" Margin="0,10,40,10" Click="AddBesuch"/>
-                        
+
                     </Grid>
                 </Grid>
             </Grid>
@@ -112,7 +113,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10" />
                     <ColumnDefinition Width="400" />
-                    <ColumnDefinition Width="10" />
+                    <ColumnDefinition Width="20" />
                     <ColumnDefinition MinWidth="400" Width="3*" />
                 </Grid.ColumnDefinitions>
 
@@ -133,7 +134,7 @@
                                  Style="{StaticResource ListBoxBesuche}" Foreground="LightGray">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
-                                    <Grid Background="#FF323232" Height="40">
+                                    <Grid Background="#FF2E2E2E" Height="40">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="40"/>
@@ -142,54 +143,103 @@
                                         </Grid.ColumnDefinitions>
 
                                         <TextBlock Grid.Column="0" Text="{Binding Arzt.Name}" FontSize="20" VerticalAlignment="Center" Margin="5,0,0,0" />
-                                        <Button Grid.Column="1" Content="Dauer" Click="GeschätzteDauerÄndern" Margin="0,0,1,0" />
-                                        <Button Grid.Column="2" Content="Lock" Click="LockListItem"/>
+
+                                        <UserControls:ImageButton 
+                                            Grid.Column="1"
+                                            Image="../Ressources/Clock.png" 
+                                            PreviewMouseLeftButtonUp="GeschätzteDauerÄndern"                                            
+                                            />
+
+                                        <CheckBox Grid.Column="2" 
+                                            IsChecked="{Binding isLocked, Mode=TwoWay}" />
+
+                                        <!--<ToggleButton Name="testtoggle" Grid.Column="2"  Margin="2" 
+                                            VerticalAlignment="Stretch" 
+                                            IsChecked="{Binding isLocked, Mode=TwoWay}" />-->
+
+                                        <UserControls:ImageButton 
+                                            Grid.Column="3"
+                                            Image="../Ressources/remove.png" 
+                                            PreviewMouseLeftButtonUp="RemoveBesuch"                                            
+                                            />
+
                                     </Grid>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>
                     </Grid>
 
-                    <Grid Grid.Row="2" x:Name="Grid_ListControls">
+                    <Grid Grid.Row="2" x:Name="Grid_ListControls"  Background="#FF212121">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Button Grid.Column="0" Name="btn_up" Content="Up" Click="MoveItemUp"/>
-                        <Button Grid.Column="1" Content="Add" Click="ShowModal"/>
-                        <Button Grid.Column="2" Content="Remove" Click="RemoveBesuch" />
-                        <Button Grid.Column="3" Name="btn_down" Content="Down" Click="MoveItemDown"/>
+
+                        <UserControls:ImageButton 
+                                            Grid.Column="0"
+                                            Image="../Ressources/arrowUp.png"
+                                            Margin="1,0,1,1" 
+                                            PreviewMouseLeftButtonUp="MoveItemUp"                                            
+                                            />
+
+                        <UserControls:ImageButton 
+                                            Grid.Column="2"
+                                            Image="../Ressources/arrowDown.png"
+                                            Margin="0,0,1,1" 
+                                            PreviewMouseLeftButtonUp="MoveItemDown"                                            
+                                            />
+
+                        <UserControls:ImageButton 
+                                            Grid.Column="1"
+                                            Image="../Ressources/add.png"
+                                            Margin="0,0,1,1" 
+                                            PreviewMouseLeftButtonUp="ShowModal"                                            
+                                            />
+
+                        <!--<Button Grid.Column="0" Name="btn_up" Content="Up" Click="MoveItemUp"/>-->
+                        <!--<Button Grid.Column="1" Content="Add" Click="ShowModal"/>-->
+                        <!--<Button Grid.Column="2" Name="btn_down" Content="Down" Click="MoveItemDown"/>-->
                     </Grid>
 
-                    <Grid Grid.Row="3" x:Name="Grid_Buttons">
+                    <Grid Grid.Row="3" x:Name="Grid_Buttons" Background="#FF212121">
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Button Grid.Column="0" Content="Speichern" Click="TagesplanSpeichern"/>
-                        <Button Grid.Column="1" Content="Abschließen" Click="TagesplanAbschließen"/>
+                        <Button Grid.Column="0" Content="Speichern" Click="TagesplanSpeichern" Style="{StaticResource FlatButton}" Margin="1,0,1,1" />
+                        <Button Grid.Column="1" Content="Route optimieren" Click="RouteOptimieren" Style="{StaticResource FlatButton}" Margin="0,0,1,1" />
+                        <Button Grid.Column="2" Content="Abschließen" Click="TagesplanAbschließen" Style="{StaticResource FlatButton}" Margin="0,0,1,1" />
                     </Grid>
                 </Grid>
 
                 <Grid Grid.Column="3" Name="map_container">
-                    <Label Grid.Column="1" x:Name="map_caption" Content="Karte" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="32" FontSize="18" Foreground="White"/>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
 
-                    <Grid Grid.Column="2" Margin="0,30,0,50">
+
+                    <Label Grid.Row="0" x:Name="map_caption" Content="Karte" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="32" FontSize="18" Foreground="White" Margin="-4,0,0,0"/>
+
+                    <Grid Grid.Row="1">
                         <bing:Map Name="BingMap"
-                                  Center="49.351491, 9.143293"
+                                  Center="49.145467, 9.219008"
                                   CredentialsProvider="AggNeGV4ySngk7sHLrggyU7kbsyPehieMJrGhZtaJ7Eubm5qe5G8YkRH2bssu6PJ"
                                   Mode="Road"
-                                  ZoomLevel="15"
+                                  ZoomLevel="13"
                                   ></bing:Map>
                     </Grid>
 
-                    <Label x:Name="lbl_map_distance" Content="Fahrtdistanz: 30km" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Foreground="White" Margin="0,0,0,24"/>
-                    <Button x:Name="btn_ProcessRoute" Content="Route optimieren" Margin="0,0,28,10" HorizontalAlignment="Right"  VerticalAlignment="Bottom" Click="RouteOptimieren"/>
-                    <Label x:Name="label1_Copy" Content="Geschätzte Dauer: 1Std. 43Min." HorizontalAlignment="Left"  VerticalAlignment="Bottom" Foreground="White" Margin="0,0,0,7"/>
+                    <Grid Grid.Row="2">
+
+                        <Label x:Name="lbl_map_distance" Content="Fahrtdistanz: 30km" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Foreground="White" Margin="0,0,0,24"/>
+                        <Label x:Name="label1_Copy" Content="Geschätzte Dauer: 1Std. 43Min." HorizontalAlignment="Left"  VerticalAlignment="Bottom" Foreground="White" Margin="0,0,0,7"/>
+                    </Grid>
                 </Grid>
 
             </Grid>

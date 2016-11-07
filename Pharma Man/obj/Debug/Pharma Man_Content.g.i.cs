@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("uiexplorer_64x.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("ressources/clock.png")]
 
 

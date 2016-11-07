@@ -19,9 +19,6 @@ using Pharma_Man.Pages;
 
 namespace Pharma_Man
 {
-    /// <summary>
-    /// Interaktionslogik für MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
 

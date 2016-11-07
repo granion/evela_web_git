@@ -24,7 +24,6 @@ namespace Pharma_Man.Core
         private Produkt[] produkte;
         public Produkt[] Produkte { get { return produkte; } }
 
-        //NEW-Alex
         private Arzt arzt;
         public Arzt Arzt { get { return arzt; } }
 
@@ -43,7 +42,7 @@ namespace Pharma_Man.Core
 
         #endregion
 
-        public Besuch(/*int id,*/DateTime datum,   Arzt arzt=null, int? id=null)
+        public Besuch(DateTime datum,   Arzt arzt=null, int? id=null)
         {
             this.datum = datum;
             this.arzt = arzt;

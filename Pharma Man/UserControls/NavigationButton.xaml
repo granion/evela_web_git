@@ -5,11 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Pharma_Man.UserControls"
              Name="UC">
-
-        <UserControl.Resources>
+    <UserControl.Resources>
             <Color x:Key="DefaultColor">#FF2E2E2E</Color>
             <Color x:Key="HighlightColor">#FF3C3C3C</Color>
-        <Color x:Key="PressedColor">#FF1B1B1B</Color>
+            <Color x:Key="PressedColor">#FF1B1B1B</Color>
 
             <SolidColorBrush x:Key="DefaultBrush" Color="{StaticResource DefaultColor}" />
             <SolidColorBrush x:Key="HighlightBrush" Color="{StaticResource HighlightColor}" />

@@ -14,10 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Pharma_Man.UserControls {
-    /// <summary>
-    /// Interaktionslogik für NavigationButton.xaml
-    /// </summary>
-    public partial class NavigationButton : UserControl {
+    public partial class NavigationButton : UserControl
+    {
         public NavigationButton() {
             InitializeComponent();
         }

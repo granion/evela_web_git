@@ -36,12 +36,11 @@ namespace Pharma_Man.Pages
         private List<Core.Arzt> ärzte = Data.Datenbank.Instance.ärzte.Values.ToList();
 
         //Map
-        double geschätzteDistanz=0;
-
+        double gesamtDistanz = 0;
 
         public Tagesplanung(Core.Tagesplan tagesplan)
         {
-                       
+
             InitializeComponent();
 
             lbl_pageCaption.Content = "Tagesplan";
@@ -50,10 +49,10 @@ namespace Pharma_Man.Pages
             this.tagesplan = tagesplan;
 
             // Lade Besuche, falls vorhanden
-            if (this.tagesplan.Besuche.Count>0)
+            if (this.tagesplan.Besuche.Count > 0)
             {
-                //var oc = new ObservableCollection<Core.Besuch>();
                 tagesplan.Besuche.ForEach(x => items.Add(x));
+                GesamtEntfernungAusrechnen();
             }
 
             // Übertrage Besuche in docList (ListBox)
@@ -74,7 +73,7 @@ namespace Pharma_Man.Pages
         #region Button-Events
 
 
-        private void MoveItemUp(object sender, RoutedEventArgs e)
+        private void MoveItemUp(object sender, MouseButtonEventArgs e)
         {
             var selectedIndex = this.docList.SelectedIndex;
 
@@ -84,17 +83,17 @@ namespace Pharma_Man.Pages
 
                 for (int i = 1; selectedIndex - i >= 0; i++)
                 {
-                    if (!items[selectedIndex -i].isLocked)
+                    if (!items[selectedIndex - i].isLocked)
                     {
                         var itemToSwap = this.items[selectedIndex - i];
 
                         this.items.Remove(itemToMoveUp);
                         this.items.Remove(itemToSwap);
-                     
-                        this.items.Insert(selectedIndex-i, itemToMoveUp);
+
+                        this.items.Insert(selectedIndex - i, itemToMoveUp);
                         this.items.Insert(selectedIndex, itemToSwap);
 
-                        this.docList.SelectedIndex = selectedIndex-i;
+                        this.docList.SelectedIndex = selectedIndex - i;
                         break;
                     }
                 }
@@ -103,14 +102,14 @@ namespace Pharma_Man.Pages
             GesamtEntfernungAusrechnen();
         }
 
-        private void MoveItemDown(object sender, RoutedEventArgs e)
+        private void MoveItemDown(object sender, MouseButtonEventArgs e)
         {
             var selectedIndex = this.docList.SelectedIndex;
             var itemToMoveDown = this.items[selectedIndex];
 
             if (selectedIndex + 1 < this.items.Count)
             {
-                for(int i = 1; selectedIndex + i < this.items.Count; i++)
+                for (int i = 1; selectedIndex + i < this.items.Count; i++)
                 {
                     if (!items[selectedIndex + i].isLocked)
                     {
@@ -120,12 +119,12 @@ namespace Pharma_Man.Pages
                         this.items.Remove(itemToSwap);
 
                         this.items.Insert(selectedIndex, itemToSwap);
-                        this.items.Insert(selectedIndex + i, itemToMoveDown);                    
+                        this.items.Insert(selectedIndex + i, itemToMoveDown);
 
                         this.docList.SelectedIndex = selectedIndex + i;
                         break;
                     }
-                }                            
+                }
             }
             docList.UpdateLayout();
             GesamtEntfernungAusrechnen();
@@ -139,36 +138,27 @@ namespace Pharma_Man.Pages
 
         }
 
-        private void GeschätzteDauerÄndern(object sender, RoutedEventArgs e)
+        private void GeschätzteDauerÄndern(object sender, MouseButtonEventArgs e)
         {
-            Button button = sender as Button;
+            UserControls.ImageButton button = sender as UserControls.ImageButton;
             Core.Besuch item = button.DataContext as Core.Besuch;
 
             //Rückgabewert übertragen
-            item.geschätzteDauer = new TimeSpan(0,30,0);
+            item.geschätzteDauer = new TimeSpan(0, 30, 0);
         }
 
         private void AddBesuch(object sender, RoutedEventArgs e)
         {
-           // items.Add(new Core.Besuch(Data.Datenbank.Instance.GetArzt(4)));
-
             foreach (var item in ärzteListe.SelectedItems)
             {
                 var arzt = item as Core.Arzt;
-                items.Add(new Core.Besuch(this.tagesplan.Date,arzt));
+                items.Add(new Core.Besuch(this.tagesplan.Date, arzt));
             }
 
-            docList.UpdateLayout();           
+            docList.UpdateLayout();
             Grid_Modal.Visibility = Visibility.Hidden;
             GesamtEntfernungAusrechnen();
         }
-
-        private void RemoveBesuch(object sender, RoutedEventArgs e)
-        {
-            items.Remove((Core.Besuch)docList.SelectedItem);
-            docList.UpdateLayout();
-        }
-
 
         private void TagesplanSpeichern(object sender, RoutedEventArgs e)
         {
@@ -188,7 +178,7 @@ namespace Pharma_Man.Pages
 
         #region Ärzteliste Methods
 
-        private void ShowModal(object sender, RoutedEventArgs e)
+        private void ShowModal(object sender, MouseButtonEventArgs e)
         {
             Grid_Modal.Visibility = Visibility.Visible;
         }
@@ -223,87 +213,142 @@ namespace Pharma_Man.Pages
 
         private void RouteOptimieren(object sender, RoutedEventArgs e)
         {
-            if (items.Count > 2)
+            // Besuche temporär speichern
+            var tmpList = items;
+
+            // Sind mehr als 2 Besuche vorhanden?
+            if (tmpList.Count > 2)
             {
-                
-                for(int i = 1; i < items.Count; i++)
+                // Äußere Schleife
+                for (int i = 0; i + 1 < tmpList.Count; i++)
                 {
-                    int id = 0;
-                    double distance = 0;
+                    int? id = null;
+                    double? minDistance = null;
 
-                    // Fahre fort, falls Besuch(i) im Plan gesperrt ist
-                    if (items[i].isLocked) continue;
-
-                    // Berechne Entfernung zum nächsten Besuch(Standort)
-                    for (int j = i+1; j + 1 < items.Count; j++)
+                    // Innere Schleife - Suche kürzesten weg zu einem Besuch
+                    for (int j = i + 1; j + 1 < tmpList.Count; j++)
                     {
                         // Überspringe falls nächster Besuch im Plan gesperrt ist
-                        if (items[j].isLocked) continue;
+                        if (items[j].isLocked) break;
 
                         // Berechne Distanz zwischen Besuch(i) und Besuch(j)
-                        GeoCoordinate ort1 = new GeoCoordinate(items[j].Arzt.Adresse.Latitude, items[j].Arzt.Adresse.Longitude);
-                        GeoCoordinate ort2 = new GeoCoordinate(items[i].Arzt.Adresse.Latitude, items[i].Arzt.Adresse.Longitude);
-                        double tmp = ort1.GetDistanceTo(ort2);
+                        GeoCoordinate ort1 = new GeoCoordinate(items[i].Arzt.Adresse.Latitude, items[i].Arzt.Adresse.Longitude);
+                        GeoCoordinate ort2 = new GeoCoordinate(items[j].Arzt.Adresse.Latitude, items[j].Arzt.Adresse.Longitude);
+                        double distance = ort1.GetDistanceTo(ort2);
 
-                        // Speichere tmp und fahre fort, falls j gleich i
-                        if (j == i + 1)
+                        // Speichere Distanz zum ersten folge Besuch
+                        if (minDistance == null)
                         {
-                            distance = tmp;
+                            minDistance = distance;
                             continue;
-                        }                      
+                        }
 
-                        // Speichere tmp und id, falls tmp kleiner distance
-                        if (tmp < distance)
+                        // Speichere Distanz, falls Distanz < mindest Distanz
+                        if (distance < minDistance)
                         {
-                            distance = tmp;
                             id = j;
+                            minDistance = distance;
                         }
                     }
 
-                    if (id != 0)
+                    // Wenn id != null, tausche Besuche
+                    if (id != null)
                     {
                         // Speichere Besuche
-                        var itemToMoveDown = items[i];
-                        var itemToSwap = this.items[id];
+                        var currentBesuch = items[i + 1];
+                        var shorterBesuch = this.items[id.Value];
 
                         // Lösche Besuche aus Liste
-                        this.items.Remove(itemToMoveDown);
-                        this.items.Remove(itemToSwap);
+                        this.items.Remove(currentBesuch);
+                        this.items.Remove(shorterBesuch);
 
                         // Füge Besuche an getauschte Positionen wieder ein
-                        this.items.Insert(i, itemToSwap);
-                        this.items.Insert(id, itemToMoveDown);
+                        this.items.Insert(i + 1, shorterBesuch);
+                        this.items.Insert(id.Value, currentBesuch);
                     }
                 }
-                docList.UpdateLayout();
 
-
-                BingMap.Children.Clear();
-
-                foreach(Core.Besuch besuch in items)
+                double value = 0;
+                for (int i = 0; i + 1 < tmpList.Count; i++)
                 {
-                    Pushpin pin = new Pushpin();
-                    pin.Tag = besuch.Arzt.Name;
-                    pin.Location = new Location(besuch.Arzt.Adresse.Latitude,besuch.Arzt.Adresse.Longitude);
-                    BingMap.Children.Add(pin);
+                    GeoCoordinate ort1 = new GeoCoordinate(tmpList[i].Arzt.Adresse.Latitude, tmpList[i].Arzt.Adresse.Longitude);
+                    GeoCoordinate ort2 = new GeoCoordinate(tmpList[i + 1].Arzt.Adresse.Latitude, tmpList[i + 1].Arzt.Adresse.Longitude);
+
+                    value += ort1.GetDistanceTo(ort2);
                 }
+
+                if (value < gesamtDistanz)
+                {
+                    items = tmpList;
+                    gesamtDistanz = value;
+                }
+
+                docList.UpdateLayout();
                 GesamtEntfernungAusrechnen();
-            }           
+            }
         }
 
         private void GesamtEntfernungAusrechnen()
         {
-            double value=0;
-
-            for(int i = 0; i + 1 < items.Count; i++)
+            double value = 0;
+            for (int i = 0; i + 1 < items.Count; i++)
             {
                 GeoCoordinate ort1 = new GeoCoordinate(items[i].Arzt.Adresse.Latitude, items[i].Arzt.Adresse.Longitude);
                 GeoCoordinate ort2 = new GeoCoordinate(items[i + 1].Arzt.Adresse.Latitude, items[i + 1].Arzt.Adresse.Longitude);
 
                 value += ort1.GetDistanceTo(ort2);
             }
+            gesamtDistanz = value;
+            lbl_map_distance.Content = "Gesamtstrecke: " + (Convert.ToInt32(value)).ToString() + "m.";
+            SetPins();
+        }
 
-            lbl_map_distance.Content = "Gesamtstrecke:" + (Convert.ToInt32(value)).ToString() + "m.";
+        private void SetPins()
+        {
+            BingMap.Children.Clear();
+
+            foreach (Core.Besuch besuch in items)
+            {
+                Pushpin pin = new Pushpin();
+                pin.Tag = besuch.Arzt.Name;
+                pin.Location = new Location(besuch.Arzt.Adresse.Latitude, besuch.Arzt.Adresse.Longitude);
+                BingMap.Children.Add(pin);
+            }
+            CenterMap();
+        }
+
+        private void CenterMap()
+        {
+            double minLat = items[0].Arzt.Adresse.Latitude;
+            double minLng = items[0].Arzt.Adresse.Longitude;
+
+            double maxLat = items[0].Arzt.Adresse.Latitude;
+            double maxLng = items[0].Arzt.Adresse.Longitude;
+
+            foreach (Core.Besuch besuch in items)
+            {
+                if (besuch.Arzt.Adresse.Latitude < minLat) minLat = besuch.Arzt.Adresse.Latitude;
+                else if (besuch.Arzt.Adresse.Latitude > maxLat) maxLat = besuch.Arzt.Adresse.Latitude;
+
+                if (besuch.Arzt.Adresse.Longitude < minLng) minLng = besuch.Arzt.Adresse.Longitude;
+                else if (besuch.Arzt.Adresse.Longitude > maxLng) maxLng = besuch.Arzt.Adresse.Longitude;
+            }
+
+            double centerLat = (minLat + maxLat) / 2;
+            double centerLng = (minLng + maxLng) / 2;
+
+            BingMap.Center = new Location(centerLat, centerLng);
+
+
+        }
+
+        private void RemoveBesuch(object sender, MouseButtonEventArgs e)
+        {
+            UserControls.ImageButton button = sender as UserControls.ImageButton;
+            Core.Besuch item = button.DataContext as Core.Besuch;
+
+            items.Remove(item);
+            docList.UpdateLayout();
         }
     }
 }

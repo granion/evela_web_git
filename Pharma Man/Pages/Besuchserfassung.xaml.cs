@@ -54,22 +54,18 @@ namespace Pharma_Man.Pages
 
             Grid_Modal_TopRow_lbl_Date.Content = "für den" + selectedDate.ToShortDateString();
 
+            items.Clear();
+
             // Rufe Tagesplan von ausgewähltem Datum von der Datenbank ab
             Core.Tagesplan tagesplan = Data.Datenbank.Instance.GetTagesplan(selectedDate);
 
             if(tagesplan != null)
-            {
-                items.Clear();
+            {               
                 tagesplan.Besuche.ForEach(x => items.Add(x));
             }
-
-          
-
+         
             // Öffne Tagesplan Modal
-
             Grid_Modal.Visibility = Visibility.Visible;
-            besuchList.Focus();
-
         }
 
         private void BesuchAusgewählt(object sender, RoutedEventArgs e)
@@ -77,15 +73,9 @@ namespace Pharma_Man.Pages
             ListBoxItem item = sender as ListBoxItem;
             Core.Besuch besuch = (Core.Besuch)item.DataContext;
 
-
-            
-
-
             Besuch_erfassen berf = new Besuch_erfassen(besuch);
             this.NavigationService.Navigate(berf);
         }
-
-
 
         private void NeuerBesuch(object sender, RoutedEventArgs e)
         {
