@@ -12,55 +12,151 @@
         <ResourceDictionary Source="../Resources.xaml" />
     </Page.Resources>
 
-    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="100" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+    <Grid>
 
-        <Label Grid.Row="0" x:Name="page_caption" Content="Besuch erfassen" Margin="10,0,0,0" Style="{StaticResource Label_PageCaption}"/>
-
-        <Grid Grid.Row="1" Margin="20,0,0,0">
-
-            <Grid>
+        <Grid x:Name="Grid_Modal" Panel.ZIndex="2" Visibility="Hidden">
+            <Grid Panel.ZIndex="3">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" Name="Datum_Zeit"/>
-                    <RowDefinition Height="*" Name="Thema"/>
-                    <!--<RowDefinition Height="*" Name="Notiz_Sonderbesuch"/>-->
-                    <RowDefinition Height="*" Name="Ärztemuster_Broschüre"/>
-                    <RowDefinition Height="*" Name="Notiz"/>
-                    <RowDefinition Height="auto" Name="BUTTONS"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <!--Datum & Zeit-->
-                <Grid Grid.Row="0">
-                    <StackPanel x:Name="sp_Zeit" Orientation="Vertical" VerticalAlignment="Top">
-                        <Label x:Name="lbl_Zeit" Content="Datum &amp; Zeit" Style="{StaticResource Label_Name}" />
-                        <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
-                            <Label Content="Am" Margin="10,0,0,0" Foreground="#FF8B8B8B"/>
-                            <TextBox x:Name="tb_Zeit" TextWrapping="Wrap"  Width="auto" VerticalContentAlignment="Center"/>
-                            <Label Content=", von" Margin="10,0,0,0" Foreground="#FF8B8B8B"/>
-                            <TextBox x:Name="tb_Von" TextWrapping="Wrap"   Width="auto" VerticalContentAlignment="Center"/>
-                            <Label Content="bis" Foreground="#FF8B8B8B"/>
-                            <TextBox x:Name="tb_Bis" TextWrapping="Wrap"  Width="auto" VerticalContentAlignment="Center"/>
-                            <Label Content="Uhr." Foreground="#FF8B8B8B"/>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.ColumnSpan="3" Grid.RowSpan="3" Panel.ZIndex="3" Click="HideModal">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Rectangle  Fill="Black" Stroke="{x:Null}" StrokeThickness="0" Opacity="0.85" />
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+
+
+                <Grid Grid.Column="1" Grid.Row="1" Panel.ZIndex="3">
+                    <Border Margin="5"
+                            BorderThickness="1" BorderBrush="Gray">
+                        <Border.Effect>
+                            <DropShadowEffect 
+                                ShadowDepth="1"
+                                Opacity="1"
+                                BlurRadius="50" 
+                                Direction="0" 
+                                Color="White"/>
+                        </Border.Effect>
+                    </Border>
+                    <Grid x:Name="Grid_ModalContent" Background="#F2191919" Margin="6">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="50"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <Label Content="Ärzteauswahl" Foreground="White" FontSize="18"></Label>
+                            <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Margin="150,0,0,0">Suchen</TextBox>
+                            <Button HorizontalAlignment="Right" Width="50" Click="HideModal" Style="{StaticResource FlatButton}">X</Button>
+                        </Grid>
+
+
+                        <ListView Grid.Row="1" Name="ärzteListe" Panel.ZIndex="4" Background="#FF252525" BorderThickness="0" Foreground="White" SelectionMode="Single">
+                            <ListView.View>
+                                <GridView AllowsColumnReorder="False">
+                                    <GridViewColumn Width="120" DisplayMemberBinding="{Binding ID}">
+                                        <GridViewColumn.Header>
+                                            <GridViewColumnHeader Tag="ID" Click="ColumnHeader_Click" >ID</GridViewColumnHeader>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                    <GridViewColumn Width="200" DisplayMemberBinding="{Binding Name}">
+                                        <GridViewColumn.Header>
+                                            <GridViewColumnHeader Tag="Name" Click="ColumnHeader_Click" >Name</GridViewColumnHeader>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+                                    <GridViewColumn Width="100" DisplayMemberBinding="{Binding Priorität}">
+                                        <GridViewColumn.Header>
+                                            <GridViewColumnHeader Tag="Priorität" Click="ColumnHeader_Click" >Priorität</GridViewColumnHeader>
+                                        </GridViewColumn.Header>
+                                    </GridViewColumn>
+
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+
+                        <Button Grid.Row="2" Content="Auswählen" Style="{StaticResource FlatButton}" HorizontalAlignment="Right" Width="100" Margin="0,10,40,10" Click="AddArzt"/>
+
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+
+
+        <Grid x:Name="Grid_Content" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" x:Name="page_caption" Content="Besuch erfassen" Margin="10,0,0,0" Style="{StaticResource Label_PageCaption}"/>
+
+            <Grid Grid.Row="1" Margin="20,0,0,0">
+
+
+
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" Name="Datum_Zeit"/>
+                        <RowDefinition Height="*" Name="Thema"/>
+                        <!--<RowDefinition Height="*" Name="Notiz_Sonderbesuch"/>-->
+                        <RowDefinition Height="*" Name="Ärztemuster_Broschüre"/>
+                        <RowDefinition Height="*" Name="Notiz"/>
+                        <RowDefinition Height="auto" Name="BUTTONS"/>
+                    </Grid.RowDefinitions>
+
+                    <!--Datum & Zeit-->
+                    <Grid Grid.Row="0">
+                        <StackPanel x:Name="sp_Zeit" Orientation="Vertical" VerticalAlignment="Top">
+                            <Label x:Name="lbl_Zeit" Content="Datum &amp; Zeit" Style="{StaticResource Label_Name}" />
+                            <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
+                                <Label Content="Am" Margin="10,0,0,0" Foreground="#FF8B8B8B"/>
+                                <TextBox x:Name="tb_Zeit" TextWrapping="Wrap"  Width="auto" VerticalContentAlignment="Center" Height="30"/>
+                                <Label Content=", von" Margin="10,0,0,0" Foreground="#FF8B8B8B"/>
+                                <TextBox x:Name="tb_Von" TextWrapping="Wrap"   Width="auto" VerticalContentAlignment="Center" Height="30"/>
+                                <Label Content="bis" Foreground="#FF8B8B8B"/>
+                                <TextBox x:Name="tb_Bis" TextWrapping="Wrap"  Width="auto" VerticalContentAlignment="Center" Height="30" />
+                                <Label Content="Uhr." Foreground="#FF8B8B8B"/>
+                            </StackPanel>
+
+                            <Label Content="Arzt" Style="{StaticResource Label_Name}" />
+                            <Grid Height="30">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="300"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBox Grid.Column="0" x:Name="tb_Arzt" TextWrapping="Wrap"  Width="300" HorizontalAlignment="Left" />
+                                <Button Grid.Column="1" Content="Arzt auswählen" Style="{StaticResource FlatButton}" Width="100" HorizontalAlignment="Left" Margin="13,0,0,0" BorderThickness="1" BorderBrush="#FF212121" Click="ShowModal" />
+                            </Grid>
+
                         </StackPanel>
+                    </Grid>
 
-                        <Label Content="Arzt" Style="{StaticResource Label_Name}" />
-                        <TextBox x:Name="tb_Arzt" TextWrapping="Wrap"  Width="300" HorizontalAlignment="Left"/>
+                    <!--Thema-->
+                    <Grid Grid.Row="1">
+                        <StackPanel x:Name="sp_Thema"  Orientation="Vertical" VerticalAlignment="Top">
+                            <Label x:Name="lbl_Thema" Content="Thema" Style="{StaticResource Label_Name}" />
+                            <TextBox x:Name="tb_Thema" TextWrapping="Wrap" Width="300" HorizontalAlignment="Left" Height="30"/>
+                        </StackPanel>
+                    </Grid>
 
-                    </StackPanel>
-                </Grid>
-
-                <!--Thema-->
-                <Grid Grid.Row="1">
-                    <StackPanel x:Name="sp_Thema"  Orientation="Vertical" VerticalAlignment="Top">
-                        <Label x:Name="lbl_Thema" Content="Thema" Style="{StaticResource Label_Name}" />
-                        <TextBox x:Name="tb_Thema" TextWrapping="Wrap" Width="300" HorizontalAlignment="Left"/>
-                    </StackPanel>
-                </Grid>
-
-                <!--Sonderbesuch Notiz--><!--
+                    <!--Sonderbesuch Notiz-->
+                    <!--
                 <Grid Grid.Row="2" Visibility="Visible">
                     <StackPanel x:Name="sp_SonderbesuchNotiz" Orientation="Vertical" VerticalAlignment="Top">
                         <Label x:Name="lbl_SonderbesuchNotiz" Content="Sonderbesuch Notiz" Style="{StaticResource Label_Name}" />
@@ -68,35 +164,32 @@
                     </StackPanel>
                 </Grid>-->
 
-                <!--Ärztemuster & Broschüre-->
-                <Grid Grid.Row="2">
-                    <StackPanel x:Name="sp_Ärztemuster"  Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Stretch">
-                        <Label x:Name="lbl_Ärztemuster" Content="Ärztemuster &amp; Broschüren" Style="{StaticResource Label_Name}"/>
-                        <ListBox x:Name="lb_Ärztemuster" Height="25" HorizontalAlignment="Left" Width="300"/>
-                    </StackPanel>
-                </Grid>
-
-                <!--Notiz-->
-                <Grid Grid.Row="3">
-                    <StackPanel x:Name="sp_Notizen" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Stretch">
-                        <Label x:Name="lbl_Notizen" Content="Notiz" Style="{StaticResource Label_Name}"/>
-                        <TextBox x:Name="tb_Notizen" HorizontalAlignment="Left" Width="300"/>
-                    </StackPanel>
-                </Grid>
-
-                <!--Buttons-->
-                <Grid Grid.Row="4">
-                    <Grid Name="Grid_Buttons" Margin="0,20">
-                        <Button x:Name="btn_Speichern" Content="Besuch speichern" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Width="auto" Height="50" Click="btn_BesuchSpeichern"/>
-                        <Button x:Name="btn_BesuchAbschließen"  Visibility="Visible" Content="Besuch abschließen" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="auto" Height="50" Margin="150,0,0,0" Click="BesuchAbschließen"/>
-
+                    <!--Ärztemuster & Broschüre-->
+                    <Grid Grid.Row="2">
+                        <StackPanel x:Name="sp_Ärztemuster"  Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+                            <Label x:Name="lbl_Ärztemuster" Content="Ärztemuster &amp; Broschüren" Style="{StaticResource Label_Name}"/>
+                            <ListBox x:Name="lb_Ärztemuster" Height="30" HorizontalAlignment="Left" Width="300" />
+                        </StackPanel>
                     </Grid>
+
+                    <!--Notiz-->
+                    <Grid Grid.Row="3">
+                        <StackPanel x:Name="sp_Notizen" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+                            <Label x:Name="lbl_Notizen" Content="Notiz" Style="{StaticResource Label_Name}"/>
+                            <TextBox x:Name="tb_Notizen" HorizontalAlignment="Left" Width="300" Height="30"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <!--Buttons-->
+                    <Grid Grid.Row="4">
+                        <Grid Name="Grid_Buttons" Margin="0,20">
+                            <Button x:Name="btn_Speichern" Content="Besuch speichern" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Width="120" Height="50" Click="btn_BesuchSpeichern" Style="{StaticResource FlatButton}" BorderThickness="1" BorderBrush="#FF212121"/>
+                            <Button x:Name="btn_BesuchAbschließen"  Visibility="Visible" Content="Besuch abschließen" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="120" Height="50" Margin="150,0,0,0" Click="BesuchAbschließen" Style="{StaticResource FlatButton}" BorderThickness="1" BorderBrush="#FF212121"/>
+
+                        </Grid>
+                    </Grid>
+
                 </Grid>
-                
-                <StackPanel>
-                    <WebBrowser x:Name="pdf_web" Visibility="Hidden" />
-                    <InkCanvas x:Name="ink" Visibility="Hidden"/>
-                    </StackPanel>
             </Grid>
         </Grid>
     </Grid>

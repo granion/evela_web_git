@@ -20,6 +20,7 @@ using Pharma_Man.controls;
 using System.Diagnostics;
 using Pharma_Man.Core;
 using Pharma_Man.Pages;
+using System.ComponentModel;
 
 namespace Pharma_Man.Pages
 {
@@ -29,9 +30,18 @@ namespace Pharma_Man.Pages
 
         Core.Besuch besuch;
 
+        //Ärzteliste
+        private GridViewColumnHeader listViewSortCol = null;
+        private SortAdorner listViewSortAdorner = null;
+        private List<Core.Arzt> ärzte = Data.Datenbank.Instance.ärzte.Values.ToList();
+
         public Besuch_erfassen(Core.Besuch besuch)
         {
             InitializeComponent();
+
+            tb_Arzt.IsReadOnly = true;
+            tb_Zeit.IsReadOnly = true;
+
 
             this.besuch = besuch;
             tb_Zeit.Text = besuch.Datum.ToShortDateString();
@@ -43,10 +53,24 @@ namespace Pharma_Man.Pages
             tb_Thema.Text = besuch.Thema;
 
             tb_Notizen.Text = besuch.Notiz;
+
+
+
+            // Init Ärzteliste
+            ärzteListe.ItemsSource = ärzte;
+
+            // Sortierfunktion Ärzteliste
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(ärzteListe.ItemsSource);
+            view.SortDescriptions.Add(new SortDescription("ID", ListSortDirection.Ascending));
+            view.SortDescriptions.Add(new SortDescription("Name", ListSortDirection.Ascending));
+            view.SortDescriptions.Add(new SortDescription("Priorität", ListSortDirection.Ascending));
+
         }
 
         private bool BesuchSpeichern()
         {
+
+
             // Status setzen
             this.besuch.isErfasst = false;
 
@@ -143,6 +167,49 @@ namespace Pharma_Man.Pages
             }
 
         }
+
+        private void AddArzt(object sender, RoutedEventArgs e)
+        {
+            if(ärzteListe.SelectedItem != null)
+            {
+                var arzt = ärzteListe.SelectedItem as Core.Arzt;
+                tb_Arzt.Text = arzt.Name;
+                this.besuch.SetArzt(arzt);
+            }
+            Grid_Modal.Visibility = Visibility.Hidden;
+
+        }
+
+        private void ShowModal(object sender, RoutedEventArgs e)
+        {
+            Grid_Modal.Visibility = Visibility.Visible;
+        }
+
+        private void HideModal(object sender, RoutedEventArgs e)
+        {
+            Grid_Modal.Visibility = Visibility.Hidden;
+        }
+
+        private void ColumnHeader_Click(object sender, RoutedEventArgs e)
+        {
+            GridViewColumnHeader column = (sender as GridViewColumnHeader);
+            string sortBy = column.Tag.ToString();
+            if (listViewSortCol != null)
+            {
+                AdornerLayer.GetAdornerLayer(listViewSortCol).Remove(listViewSortAdorner);
+                ärzteListe.Items.SortDescriptions.Clear();
+            }
+
+            ListSortDirection newDir = ListSortDirection.Ascending;
+            if (listViewSortCol == column && listViewSortAdorner.Direction == newDir)
+                newDir = ListSortDirection.Descending;
+
+            listViewSortCol = column;
+            listViewSortAdorner = new SortAdorner(listViewSortCol, newDir);
+            AdornerLayer.GetAdornerLayer(listViewSortCol).Add(listViewSortAdorner);
+            ärzteListe.Items.SortDescriptions.Add(new SortDescription(sortBy, newDir));
+        }
+
     }
 }
 
