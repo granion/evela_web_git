@@ -1,0 +1,55 @@
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\bin\Release\Pharma Man.exe.config
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\bin\Release\Pharma Man.exe
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\bin\Release\Pharma Man.pdb
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\bin\Release\Microsoft.Maps.MapControl.WPF.dll
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\bin\Release\MigraDoc.DocumentObjectModel-WPF.dll
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\bin\Release\MigraDoc.Rendering-WPF.dll
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\bin\Release\MigraDoc.RtfRendering-WPF.dll
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\bin\Release\PdfSharp-WPF.dll
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\bin\Release\PdfSharp.Charting-WPF.dll
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\bin\Release\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\bin\Release\System.Windows.Interactivity.dll
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\bin\Release\Microsoft.Maps.MapControl.WPF.xml
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\bin\Release\de\MigraDoc.DocumentObjectModel-WPF.resources.dll
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\bin\Release\de\MigraDoc.Rendering-WPF.resources.dll
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\bin\Release\de\MigraDoc.RtfRendering-WPF.resources.dll
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\bin\Release\de\PdfSharp-WPF.resources.dll
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\bin\Release\de\PdfSharp.Charting-WPF.resources.dll
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\bin\Release\de\System.Windows.Interactivity.resources.dll
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\bin\Release\en\System.Windows.Interactivity.resources.dll
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\bin\Release\es\System.Windows.Interactivity.resources.dll
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\bin\Release\fr\System.Windows.Interactivity.resources.dll
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\bin\Release\it\System.Windows.Interactivity.resources.dll
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\bin\Release\ja\System.Windows.Interactivity.resources.dll
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\bin\Release\ko\System.Windows.Interactivity.resources.dll
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\bin\Release\ru\System.Windows.Interactivity.resources.dll
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\bin\Release\zh-Hans\System.Windows.Interactivity.resources.dll
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\bin\Release\zh-Hant\System.Windows.Interactivity.resources.dll
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Release\Pages\Ärzteliste.g.cs
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Release\Pages\Besuch erfassen.g.cs
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Release\Pages\Besuchsplanung.g.cs
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Release\Pages\Besuchserfassung.g.cs
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Release\MainWindow.g.cs
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Release\Pages\Beleg.g.cs
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Release\Pages\Tagesplanung.g.cs
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Release\UserControls\ImageButton.g.cs
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Release\UserControls\NavigationButton.g.cs
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Release\App.g.cs
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Release\GeneratedInternalTypeHelper.g.cs
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Release\Pharma Man_MarkupCompile.cache
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Release\Pharma Man_MarkupCompile.lref
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Release\Pages\Ärzteliste.baml
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Release\Pages\Besuch erfassen.baml
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Release\Pages\Besuchsplanung.baml
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Release\Pages\Besuchserfassung.baml
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Release\MainWindow.baml
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Release\Pages\Beleg.baml
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Release\Pages\Tagesplanung.baml
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Release\Resources.baml
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Release\UserControls\ImageButton.baml
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Release\UserControls\NavigationButton.baml
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Release\Pharma Man.g.resources
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Release\Pharma_Man.Properties.Resources.resources
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Release\Pharma Man.csproj.GenerateResource.Cache
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Release\Pharma Man.exe
+C:\Users\Alex\Documents\GitHub\evela_web_git\Pharma Man\obj\Release\Pharma Man.pdb
